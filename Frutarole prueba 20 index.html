@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frutarole | Jugo de Naranja Premium</title>
+<style>
+  :root { --orange: #FF8C00; --orange-dark: #e67e00; --text-dark: #222; --text-light: #fff; --bg-light: #f9f9f9; }
+  body { margin: 0; font-family: 'Segoe UI', Roboto, sans-serif; background: #ffffff; line-height: 1.6; color: var(--text-dark); overflow-x: hidden; scroll-behavior: smooth; }
+  
+  header { display: flex; justify-content: center; align-items: center; padding: 25px 8%; background: var(--orange); color: var(--text-light); position: fixed; width: 100%; z-index: 1000; box-sizing: border-box; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+  .logo { font-weight: 900; font-size: 2.4rem; letter-spacing: -1.5px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+  .logo-icon { background-color: white; color: var(--orange); width: 35px; height: 35px; border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; font-size: 1.4rem; animation: pulse 2s infinite; }
+  
+  @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+  .hero { padding: 220px 10% 120px; text-align: center; background: linear-gradient(135deg, #FF8C00 0%, #ffaa33 100%); color: white; }
+  .hero h1 { font-size: 4.5rem; font-weight: 900; line-height: 1; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+
+  section { padding: 100px 10%; position: relative; }
+  h2 { font-size: 3rem; font-weight: 800; margin-bottom: 50px; color: var(--orange); text-align: center; }
+
+  .nosotros-text { max-width: 850px; margin: 0 auto; text-align: center; font-size: 1.4rem; color: #444; }
+
+  .producto-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-top: 50px; }
+  .producto-item { background: #fff; padding: 40px 30px; border-radius: 30px; text-align: center; border: 1px solid #eee; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+  .producto-item:hover { transform: translateY(-15px) scale(1.03); box-shadow: 0 20px 40px rgba(255, 140, 0, 0.15); border-color: var(--orange); }
+  .producto-item h3 { font-size: 1.6rem; color: var(--orange); margin-bottom: 15px; }
+
+  .clientes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; list-style: none; padding: 0; max-width: 1000px; margin: 0 auto; }
+  .clientes-grid li { padding: 25px; background: #fff; border-radius: 20px; text-align: center; font-weight: 800; color: var(--orange); border: 1px solid #f0f0f0; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+  .clientes-grid li:hover { background: var(--orange); color: white; transform: translateY(-5px); }
+
+  #pedidoForm { background: var(--orange); padding: 50px; border-radius: 40px; display: grid; gap: 20px; max-width: 600px; margin: 0 auto; color: white; box-shadow: 0 30px 60px rgba(0,0,0,0.25); }
+  input, select { padding: 18px; border: none; border-radius: 15px; font-size: 17px; width: 100%; box-sizing: border-box; font-weight: 500; }
+
+  .pago-box { background: white; color: var(--text-dark); padding: 25px; border-radius: 25px; text-align: center; margin: 10px 0; }
+  .pago-box .monto-label { margin: 0; color: #888; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; }
+  .pago-box .monto { font-size: 3rem; font-weight: 900; color: var(--orange); display: block; line-height: 1.2; }
+
+  .btn-final { background: white; color: var(--orange); font-weight: 900; padding: 22px; border: none; border-radius: 20px; cursor: pointer; font-size: 1.5rem; transition: 0.3s; width: 100%; }
+  .btn-final:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+  .whatsapp-btn { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white; border-radius: 50px; padding: 15px 25px; font-weight: 800; text-decoration: none; z-index: 2000; box-shadow: 0 10px 25px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 10px; transition: 0.3s; }
+  .whatsapp-btn:hover { transform: scale(1.1); background-color: #128c7e; }
+
+  @media (max-width: 900px) { 
+    .clientes-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero h1 { font-size: 2.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Frutar<span class="logo-icon">🍊</span>le</div>
+</header>
+
+<div class="hero">
+  <h1>Jugo de naranja <br>100% Puro y Natural</h1>
+</div>
+
+<section id="quienes-somos">
+  <h2>Quiénes Somos</h2>
+  <div class="nosotros-text">
+    <p>Tenemos <strong>25 años</strong> llevando el mejor jugo de naranja a los hoteles y casinos más importantes de Lima. Trabajamos directamente con los agricultores locales para asegurar un producto nacional y de la mejor calidad.</p>
+  </div>
+</section>
+
+<section id="producto" style="background-color: var(--bg-light); text-align: center;">
+  <h2>Nuestros Pilares</h2>
+  <div class="producto-grid">
+    <div class="producto-item"><h3>🍊 Pureza</h3><p>Jugo 100% natural sin agua ni azúcares añadidos.</p></div>
+    <div class="producto-item"><h3>⏱️ Frescura</h3><p>Exprimido y entregado el mismo día.</p></div>
+    <div class="producto-item"><h3>❄️ Frío</h3><p>Mantenemos los 4°C hasta tu puerta.</p></div>
+    <div class="producto-item"><h3>🗓️ Vida Útil</h3><p>5 días de frescura natural garantizada.</p></div>
+  </div>
+</section>
+
+<section id="clientes">
+  <h2>Confían en nosotros</h2>
+  <ul class="clientes-grid">
+    <li>JW Marriott</li><li>Swissôtel</li><li>Casa Andina</li><li>Iberostar</li>
+    <li>Radisson</li><li>Don Mamino</li><li>Ibis Hotel</li><li>Sheraton</li>
+  </ul>
+</section>
+
+<section id="pedido">
+  <h2>Realiza tu pedido</h2>
+  <form id="pedidoForm">
+    <input id="nombre" type="text" placeholder="Nombre completo o Empresa" required>
+    <input id="telefono" type="tel" placeholder="WhatsApp" required>
+    <select id="distrito" required>
+      <option value="">Seleccione Distrito de entrega</option>
+      <option>Miraflores</option><option>San Borja</option><option>San Isidro</option>
+      <option>Lince</option><option>Jesus Maria</option><option>Barranco</option>
+      <option>Surco</option><option>Surquillo</option><option>Magdalena</option>
+    </select>
+    <input id="direccion" type="text" placeholder="Dirección exacta de entrega" required>
+    
+    <div style="display:flex; justify-content: space-between; align-items: center; background:rgba(255,255,255,0.2); padding:15px; border-radius:15px; border: 1px solid white;">
+      <span style="font-weight: 800; color: white;">Galones (S/ 25.00 c/u):</span>
+      <input id="cantidad" type="number" min="1" value="1" style="width:70px; font-weight: 900; text-align: center;" onchange="document.getElementById('montoVer').innerText = (this.value * 25).toFixed(2)">
+    </div>
+
+    <div class="pago-box">
+      <p class="monto-label">Total a pagar</p>
+      <span class="monto">S/ <span id="montoVer">25.00</span></span>
+    </div>
+
+    <button type="submit" class="btn-final" id="btnSubmit">PAGAR AHORA</button>
+  </form>
+</section>
+
+<a href="https://wa.me/51981226618" class="whatsapp-btn" target="_blank">
+  <span>Dudas? WhatsApp</span>
+</a>
+
+<script src="https://checkout.culqi.com/js/v4"></script>
+<script>
+  Culqi.publicKey = 'TU_PUBLIC_KEY_DE_CULQI';
+
+  document.getElementById('pedidoForm').onsubmit = function(e){
+    e.preventDefault();
+    const cant = document.getElementById("cantidad").value;
+    const totalSoles = cant * 25;
+
+    Culqi.settings({
+      title: "Frutarole",
+      currency: "PEN",
+      amount: totalSoles * 100
+    });
+
+    Culqi.options({
+      paymentMethods: { tarjeta: true, yape: true, bancaMovil: true, agente: true }
+    });
+
+    Culqi.open();
+
+    const datos = {
+      nombre: document.getElementById('nombre').value,
+      telf: document.getElementById('telefono').value,
+      dist: document.getElementById('distrito').value,
+      dir: document.getElementById('direccion').value,
+      cant: cant,
+      total: totalSoles.toFixed(2)
+    };
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwo1fKJ7upkqnNAghsS-q9OO6ORk26wWNSyu4rTBX1Uh2Ph0iio1vJy0pDDIVa85Saw/exec';
+    const formData = new FormData();
+    for(const key in datos){ formData.append(key, datos[key]); }
+    fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' });
+  };
+
+  function culqi() {
+    if (Culqi.token) { 
+      alert("Pago procesado correctamente.");
+    } else { 
+      console.log(Culqi.error.message);
+    }
+  }
+</script>
+
+</body>
+</html>
