@@ -2,51 +2,308 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Frutarole | Jugo de Naranja Premium</title>
 <style>
-  :root { --orange: #FF8C00; --orange-dark: #e67e00; --text-dark: #222; --text-light: #fff; --bg-light: #f9f9f9; }
-  body { margin: 0; font-family: 'Segoe UI', Roboto, sans-serif; background: #ffffff; line-height: 1.6; color: var(--text-dark); overflow-x: hidden; scroll-behavior: smooth; }
+  :root { 
+    --orange: #FF8C00; 
+    --orange-dark: #e67e00; 
+    --text-dark: #222; 
+    --text-light: #fff; 
+    --bg-light: #f9f9f9;
+    --shadow: 0 4px 15px rgba(0,0,0,0.08);
+  }
   
-  header { display: flex; justify-content: center; align-items: center; padding: 25px 8%; background: var(--orange); color: var(--text-light); position: fixed; width: 100%; z-index: 1000; box-sizing: border-box; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-  .logo { font-weight: 900; font-size: 2.4rem; letter-spacing: -1.5px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
-  .logo-icon { background-color: white; color: var(--orange); width: 35px; height: 35px; border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; font-size: 1.4rem; animation: pulse 2s infinite; }
+  body { 
+    margin: 0; 
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+    background: #ffffff; 
+    line-height: 1.5; 
+    color: var(--text-dark); 
+    overflow-x: hidden; 
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
   
-  @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+  /* --- HEADER & LOGO --- */
+  header { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 15px 5%; 
+    background: var(--orange); 
+    color: var(--text-light); 
+    position: fixed; 
+    width: 100%; 
+    z-index: 1000; 
+    box-sizing: border-box; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+  }
+  
+  .logo { 
+    font-weight: 900; 
+    font-size: 1.8rem; 
+    letter-spacing: -1px; 
+    text-transform: uppercase; 
+    display: flex; 
+    align-items: center; 
+    gap: 6px; 
+  }
+  
+  .logo-icon { 
+    background-color: white; 
+    color: var(--orange); 
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%; 
+    display: inline-flex; 
+    justify-content: center; 
+    align-items: center; 
+    font-size: 1.2rem; 
+    animation: pulse 2s infinite; 
+  }
+  
+  @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
-  .hero { padding: 220px 10% 120px; text-align: center; background: linear-gradient(135deg, #FF8C00 0%, #ffaa33 100%); color: white; }
-  .hero h1 { font-size: 4.5rem; font-weight: 900; line-height: 1; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+  /* --- HERO SECTION --- */
+  .hero { 
+    padding: 130px 8% 60px; 
+    text-align: center; 
+    background: linear-gradient(135deg, #FF8C00 0%, #ffaa33 100%); 
+    color: white; 
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+  }
+  
+  .hero h1 { 
+    font-size: 2.6rem; 
+    font-weight: 900; 
+    line-height: 1.1; 
+    margin: 0; 
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.15); 
+  }
+  
+  .hero p {
+    font-size: 1.1rem;
+    margin-top: 15px;
+    opacity: 0.95;
+    font-weight: 500;
+  }
 
-  section { padding: 100px 10%; position: relative; }
-  h2 { font-size: 3rem; font-weight: 800; margin-bottom: 50px; color: var(--orange); text-align: center; }
+  /* --- SECCIONES GENERALES --- */
+  section { 
+    padding: 60px 8%; 
+    position: relative; 
+  }
+  
+  h2 { 
+    font-size: 2.2rem; 
+    font-weight: 800; 
+    margin-bottom: 35px; 
+    color: var(--orange); 
+    text-align: center; 
+    letter-spacing: -0.5px;
+  }
 
-  .nosotros-text { max-width: 850px; margin: 0 auto; text-align: center; font-size: 1.4rem; color: #444; }
+  /* --- QUIÉNES SOMOS --- */
+  .nosotros-text { 
+    max-width: 700px; 
+    margin: 0 auto; 
+    text-align: center; 
+    font-size: 1.1rem; 
+    color: #444; 
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+  }
 
-  .producto-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-top: 50px; }
-  .producto-item { background: #fff; padding: 40px 30px; border-radius: 30px; text-align: center; border: 1px solid #eee; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-  .producto-item:hover { transform: translateY(-15px) scale(1.03); box-shadow: 0 20px 40px rgba(255, 140, 0, 0.15); border-color: var(--orange); }
-  .producto-item h3 { font-size: 1.6rem; color: var(--orange); margin-bottom: 15px; }
+  /* --- PRODUCTO / PILARES --- */
+  .producto-grid { 
+    display: grid; 
+    grid-template-columns: 1fr; /* Móvil: una columna */
+    gap: 20px; 
+    margin-top: 40px; 
+  }
+  
+  .producto-item { 
+    background: #fff; 
+    padding: 30px 25px; 
+    border-radius: 20px; 
+    text-align: center; 
+    border: 1px solid #eee; 
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+  }
+  
+  .producto-item:active { transform: scale(0.98); } /* Feedback al toque */
+  
+  .producto-item h3 { 
+    font-size: 1.4rem; 
+    color: var(--orange); 
+    margin-bottom: 10px; 
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .producto-item p { margin: 0; font-size: 1rem; color: #555; }
 
-  .clientes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; list-style: none; padding: 0; max-width: 1000px; margin: 0 auto; }
-  .clientes-grid li { padding: 25px; background: #fff; border-radius: 20px; text-align: center; font-weight: 800; color: var(--orange); border: 1px solid #f0f0f0; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-  .clientes-grid li:hover { background: var(--orange); color: white; transform: translateY(-5px); }
+  /* --- CLIENTES --- */
+  .clientes-grid { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); /* Móvil: dos columnas */
+    gap: 15px; 
+    list-style: none; 
+    padding: 0; 
+    max-width: 800px; 
+    margin: 0 auto; 
+  }
+  
+  .clientes-grid li { 
+    padding: 18px; 
+    background: #fff; 
+    border-radius: 15px; 
+    text-align: center; 
+    font-weight: 700; 
+    color: var(--orange); 
+    border: 1px solid #f0f0f0; 
+    font-size: 0.95rem;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.04);
+  }
 
-  #pedidoForm { background: var(--orange); padding: 50px; border-radius: 40px; display: grid; gap: 20px; max-width: 600px; margin: 0 auto; color: white; box-shadow: 0 30px 60px rgba(0,0,0,0.25); }
-  input, select { padding: 18px; border: none; border-radius: 15px; font-size: 17px; width: 100%; box-sizing: border-box; font-weight: 500; }
+  /* --- FORMULARIO DE PEDIDO --- */
+  #pedidoForm { 
+    background: var(--orange); 
+    padding: 35px 25px; 
+    border-radius: 30px; 
+    display: grid; 
+    gap: 15px; 
+    max-width: 500px; 
+    margin: 0 auto; 
+    color: white; 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2); 
+    scroll-margin-top: 80px; /* Para que al scrollear no tape el header */
+  }
+  
+  input, select { 
+    padding: 16px; 
+    border: none; 
+    border-radius: 12px; 
+    font-size: 16px; /* Evita zoom automático en iOS */
+    width: 100%; 
+    box-sizing: border-box; 
+    font-weight: 500; 
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+  }
+  
+  input:focus, select:focus { outline: 2px solid var(--text-light); }
 
-  .pago-box { background: white; color: var(--text-dark); padding: 25px; border-radius: 25px; text-align: center; margin: 10px 0; }
-  .pago-box .monto-label { margin: 0; color: #888; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; }
-  .pago-box .monto { font-size: 3rem; font-weight: 900; color: var(--orange); display: block; line-height: 1.2; }
+  .pago-box { 
+    background: white; 
+    color: var(--text-dark); 
+    padding: 20px; 
+    border-radius: 20px; 
+    text-align: center; 
+    margin: 5px 0; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .pago-box .monto-label { margin: 0; color: #777; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .pago-box .monto { font-size: 2.8rem; font-weight: 900; color: var(--orange); display: block; line-height: 1.1; margin-top: 5px;}
 
-  .btn-final { background: white; color: var(--orange); font-weight: 900; padding: 22px; border: none; border-radius: 20px; cursor: pointer; font-size: 1.5rem; transition: 0.3s; width: 100%; }
-  .btn-final:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+  .btn-final { 
+    background: white; 
+    color: var(--orange); 
+    font-weight: 800; 
+    padding: 20px; 
+    border: none; 
+    border-radius: 15px; 
+    cursor: pointer; 
+    font-size: 1.3rem; 
+    transition: 0.2s; 
+    width: 100%; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .btn-final:active { transform: scale(0.97); background-color: #fefefe; }
 
-  .whatsapp-btn { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white; border-radius: 50px; padding: 15px 25px; font-weight: 800; text-decoration: none; z-index: 2000; box-shadow: 0 10px 25px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 10px; transition: 0.3s; }
-  .whatsapp-btn:hover { transform: scale(1.1); background-color: #128c7e; }
+  /* --- BOTONES FLOTANTES DE ACCIÓN (MÓVIL) --- */
+  .floating-actions {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 2000;
+    align-items: flex-end;
+  }
 
-  @media (max-width: 900px) { 
-    .clientes-grid { grid-template-columns: repeat(2, 1fr); }
-    .hero h1 { font-size: 2.8rem; }
+  .whatsapp-btn { 
+    background-color: #25d366; 
+    color: white; 
+    border-radius: 50px; 
+    padding: 12px 20px; 
+    font-weight: 700; 
+    text-decoration: none; 
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15); 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    transition: 0.3s; 
+    font-size: 0.9rem;
+  }
+
+  /* Nuevo Botón de Pedido Ya (Solo Móvil) */
+  .order-now-btn {
+    background-color: var(--orange);
+    color: white;
+    border-radius: 50px;
+    padding: 15px 25px;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(255, 140, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+    font-size: 1.1rem;
+    border: 2px solid white;
+  }
+  
+  .order-now-btn:active, .whatsapp-btn:active { transform: scale(0.95); }
+
+  /* --- RESPONSIVE / ESCRITORIO --- */
+  @media (min-width: 768px) {
+    header { padding: 20px 8%; }
+    .logo { font-size: 2.2rem; }
+    .logo-icon { width: 35px; height: 35px; font-size: 1.4rem; }
+    
+    .hero { padding: 180px 10% 100px; border-radius: 0; }
+    .hero h1 { font-size: 4rem; }
+    .hero p { font-size: 1.3rem; }
+    
+    section { padding: 90px 10%; }
+    h2 { font-size: 2.8rem; margin-bottom: 50px; }
+    
+    .nosotros-text { font-size: 1.3rem; padding: 40px; }
+    
+    .producto-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+    .producto-item h3 { font-size: 1.6rem; }
+    
+    .clientes-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .clientes-grid li { font-size: 1.05rem; padding: 22px; }
+    
+    #pedidoForm { padding: 50px; gap: 20px; }
+    input, select { padding: 18px; font-size: 17px; }
+    
+    .floating-actions { bottom: 30px; right: 30px; gap: 15px; }
+    .whatsapp-btn { padding: 15px 25px; font-size: 1rem; }
+    .order-now-btn { display: none; } /* Esconder en escritorio */
   }
 </style>
 </head>
@@ -58,6 +315,7 @@
 
 <div class="hero">
   <h1>Jugo de naranja <br>100% Puro y Natural</h1>
+  <p>Del campo a tu mesa, con la calidad de siempre.</p>
 </div>
 
 <section id="quienes-somos">
@@ -67,13 +325,13 @@
   </div>
 </section>
 
-<section id="producto" style="background-color: var(--bg-light); text-align: center;">
+<section id="producto" style="background-color: var(--bg-light);">
   <h2>Nuestros Pilares</h2>
   <div class="producto-grid">
-    <div class="producto-item"><h3>🍊 Pureza</h3><p>Jugo 100% natural sin agua ni azúcares añadidos.</p></div>
-    <div class="producto-item"><h3>⏱️ Frescura</h3><p>Exprimido y entregado el mismo día.</p></div>
-    <div class="producto-item"><h3>❄️ Frío</h3><p>Mantenemos los 4°C hasta tu puerta.</p></div>
-    <div class="producto-item"><h3>🗓️ Vida Útil</h3><p>5 días de frescura natural garantizada.</p></div>
+    <div class="producto-item"><h3><span>🍊</span> Pureza</h3><p>Jugo 100% natural sin agua ni azúcares añadidos.</p></div>
+    <div class="producto-item"><h3><span>⏱️</span> Frescura</h3><p>Exprimido y entregado el mismo día.</p></div>
+    <div class="producto-item"><h3><span>❄️</span> Frío</h3><p>Mantenemos los 4°C hasta tu puerta.</p></div>
+    <div class="producto-item"><h3><span>🗓️</span> Vida Útil</h3><p>5 días de frescura natural garantizada.</p></div>
   </div>
 </section>
 
@@ -89,7 +347,7 @@
   <h2>Realiza tu pedido</h2>
   <form id="pedidoForm">
     <input id="nombre" type="text" placeholder="Nombre completo o Empresa" required>
-    <input id="telefono" type="tel" placeholder="WhatsApp" required>
+    <input id="telefono" type="tel" placeholder="WhatsApp (9 dígitos)" required pattern="[0-9]{9}">
     <select id="distrito" required>
       <option value="">Seleccione Distrito de entrega</option>
       <option>Miraflores</option><option>San Borja</option><option>San Isidro</option>
@@ -98,9 +356,9 @@
     </select>
     <input id="direccion" type="text" placeholder="Dirección exacta de entrega" required>
     
-    <div style="display:flex; justify-content: space-between; align-items: center; background:rgba(255,255,255,0.2); padding:15px; border-radius:15px; border: 1px solid white;">
-      <span style="font-weight: 800; color: white;">Galones (S/ 25.00 c/u):</span>
-      <input id="cantidad" type="number" min="1" value="1" style="width:70px; font-weight: 900; text-align: center;" onchange="document.getElementById('montoVer').innerText = (this.value * 25).toFixed(2)">
+    <div style="display:flex; justify-content: space-between; align-items: center; background:rgba(255,255,255,0.15); padding:15px; border-radius:12px; border: 1px solid rgba(255,255,255,0.3);">
+      <span style="font-weight: 700; color: white; font-size: 1.1rem;">Galones (S/ 25.00 c/u):</span>
+      <input id="cantidad" type="number" min="1" value="1" style="width:70px; font-weight: 900; text-align: center; padding: 12px;" onchange="document.getElementById('montoVer').innerText = (this.value * 25).toFixed(2)">
     </div>
 
     <div class="pago-box">
@@ -108,36 +366,35 @@
       <span class="monto">S/ <span id="montoVer">25.00</span></span>
     </div>
 
-    <button type="submit" class="btn-final" id="btnSubmit">PAGAR AHORA</button>
+    <button type="submit" class="btn-final" id="btnSubmit">PAGAR AHORA 💳</button>
   </form>
 </section>
 
-<a href="https://wa.me/51981226618" class="whatsapp-btn" target="_blank">
-  <span>Dudas? WhatsApp</span>
-</a>
+<div class="floating-actions">
+  <a href="#pedido" class="order-now-btn">
+    <span>🛒 PIDE TU GALÓN AQUÍ</span>
+  </a>
+  
+  <a href="https://wa.me/51981226618?text=Hola%20Frutarole,%20tengo%20una%20consulta" class="whatsapp-btn" target="_blank">
+    <span>¿Dudas? WhatsApp</span>
+  </a>
+</div>
 
 <script src="https://checkout.culqi.com/js/v4"></script>
 <script>
+  // IMPORTANTE: Pon aquí tu Llave Pública de Culqi real (pk_...)
   Culqi.publicKey = 'TU_PUBLIC_KEY_DE_CULQI';
+
+  let datosTemporales = {}; 
 
   document.getElementById('pedidoForm').onsubmit = function(e){
     e.preventDefault();
+    
     const cant = document.getElementById("cantidad").value;
     const totalSoles = cant * 25;
 
-    Culqi.settings({
-      title: "Frutarole",
-      currency: "PEN",
-      amount: totalSoles * 100
-    });
-
-    Culqi.options({
-      paymentMethods: { tarjeta: true, yape: true, bancaMovil: true, agente: true }
-    });
-
-    Culqi.open();
-
-    const datos = {
+    // Guardamos los datos antes de abrir Culqi
+    datosTemporales = {
       nombre: document.getElementById('nombre').value,
       telf: document.getElementById('telefono').value,
       dist: document.getElementById('distrito').value,
@@ -146,21 +403,49 @@
       total: totalSoles.toFixed(2)
     };
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwo1fKJ7upkqnNAghsS-q9OO6ORk26wWNSyu4rTBX1Uh2Ph0iio1vJy0pDDIVa85Saw/exec';
-    const formData = new FormData();
-    for(const key in datos){ formData.append(key, datos[key]); }
-    fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' });
+    Culqi.settings({
+      title: "Frutarole",
+      currency: "PEN",
+      amount: totalSoles * 100 
+    });
+
+    Culqi.options({
+      paymentMethods: { tarjeta: true, yape: true, bancaMovil: true, agente: true }
+    });
+
+    Culqi.open();
   };
 
   function culqi() {
     if (Culqi.token) { 
-      alert("Pago procesado correctamente.");
+      // Si el pago es exitoso, enviamos al Sheets
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbwo1fKJ7upkqnNAghsS-q9OO6ORk26wWNSyu4rTBX1Uh2Ph0iio1vJy0pDDIVa85Saw/exec';
+      const formData = new FormData();
+      
+      for(const key in datosTemporales){ 
+        formData.append(key, datosTemporales[key]); 
+      }
+
+      // Deshabilitar botón para evitar doble clic
+      document.getElementById('btnSubmit').disabled = true;
+      document.getElementById('btnSubmit').innerText = 'PROCESANDO...';
+
+      fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
+        .then(() => {
+          alert("¡Pago exitoso y pedido registrado! Nos vemos pronto.");
+          location.reload(); 
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert("Hubo un error al registrar tu pedido, pero tu pago sí se procesó. Por favor contáctanos por WhatsApp.");
+        });
+
     } else { 
       console.log(Culqi.error.message);
+      alert("Error: " + Culqi.error.message);
     }
   }
 </script>
 
 </body>
-
 </html>
