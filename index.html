@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Frutarole | Jugo de Naranja Premium</title>
+
 <style>
   :root { 
     --orange: #FF8C00; 
@@ -11,7 +12,7 @@
     --text-dark: #222; 
     --text-light: #fff; 
     --bg-light: #f9f9f9;
-    --shadow: 0 4px 15px rgba(0,0,0,0.08);
+    --shadow: 0 10px 30px rgba(0,0,0,0.1);
   }
   
   body { 
@@ -22,6 +23,7 @@
     color: var(--text-dark); 
     overflow-x: hidden; 
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
   }
   
   header { 
@@ -38,10 +40,41 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
   }
   
-  .logo { font-weight: 900; font-size: 1.8rem; text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
-  .logo-icon { background-color: white; color: var(--orange); width: 30px; height: 30px; border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; font-size: 1.2rem; animation: pulse 2s infinite; }
+  .logo { 
+    font-weight: 900; 
+    font-size: 1.8rem; 
+    letter-spacing: -1px; 
+    text-transform: uppercase; 
+    display: flex; 
+    align-items: center; 
+    gap: 6px; 
+  }
   
-  @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+  .logo-icon { 
+    background-color: white; 
+    color: var(--orange); 
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%; 
+    display: inline-flex; 
+    justify-content: center; 
+    align-items: center; 
+    font-size: 1.2rem; 
+    animation: pulse 2s infinite; 
+  }
+  
+  @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+  /* Animación de entrada al bajar */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   .hero { 
     padding: 130px 8% 60px; 
@@ -52,63 +85,122 @@
     border-bottom-right-radius: 40px;
   }
   
-  .hero h1 { font-size: 2.6rem; font-weight: 900; line-height: 1.1; margin: 0; }
-  .hero p { font-size: 1.1rem; margin-top: 15px; opacity: 0.95; }
+  .hero h1 { 
+    font-size: 2.6rem; 
+    font-weight: 900; 
+    line-height: 1.1; 
+    margin: 0; 
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.15); 
+  }
+  
+  .hero p { font-size: 1.1rem; margin-top: 15px; opacity: 0.95; font-weight: 500; }
 
   section { padding: 60px 8%; position: relative; }
-  h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 35px; color: var(--orange); text-align: center; }
-
-  .nosotros-text { 
-    max-width: 700px; margin: 0 auto; text-align: center; font-size: 1.1rem; color: #444; 
-    background: white; padding: 30px; border-radius: 20px; box-shadow: var(--shadow);
+  
+  h2 { 
+    font-size: 2.2rem; font-weight: 800; margin-bottom: 35px; 
+    color: var(--orange); text-align: center; letter-spacing: -0.5px;
   }
 
-  .producto-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 40px; }
-  .producto-item { background: #fff; padding: 30px 25px; border-radius: 20px; text-align: center; border: 1px solid #eee; box-shadow: var(--shadow); }
-  .producto-item h3 { font-size: 1.4rem; color: var(--orange); margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .nosotros-text { 
+    max-width: 700px; margin: 0 auto; text-align: center; 
+    font-size: 1.1rem; color: #444; background: white;
+    padding: 30px; border-radius: 20px; box-shadow: var(--shadow);
+  }
 
-  .clientes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; list-style: none; padding: 0; max-width: 800px; margin: 0 auto; }
-  .clientes-grid li { padding: 18px; background: #fff; border-radius: 15px; text-align: center; font-weight: 700; color: var(--orange); border: 1px solid #f0f0f0; font-size: 0.95rem; }
+  .producto-grid { 
+    display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 40px; 
+  }
+  
+  .producto-item { 
+    background: #fff; padding: 35px 25px; border-radius: 20px; 
+    text-align: center; border: 1px solid #eee; 
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+  }
+  
+  /* --- EFECTO HOVER ICONOS --- */
+  .producto-item:hover { 
+    transform: translateY(-10px); 
+    border-color: var(--orange);
+    box-shadow: 0 15px 35px rgba(255, 140, 0, 0.15);
+  }
+  
+  .producto-item h3 { 
+    font-size: 1.4rem; color: var(--orange); margin-bottom: 10px; 
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  .producto-item:hover h3 { transform: scale(1.15); }
+  .producto-item h3 span { font-size: 2rem; }
+  
+  .clientes-grid { 
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; 
+    list-style: none; padding: 0; max-width: 800px; margin: 0 auto; 
+  }
+  
+  .clientes-grid li { 
+    padding: 18px; background: #fff; border-radius: 15px; text-align: center; 
+    font-weight: 700; color: var(--orange); border: 1px solid #f0f0f0; 
+    font-size: 0.95rem; box-shadow: 0 3px 8px rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
+  }
+
+  .clientes-grid li:hover {
+    background: var(--orange);
+    color: white;
+    transform: scale(1.05);
+  }
 
   #pedidoForm { 
-    background: var(--orange); padding: 35px 25px; border-radius: 30px; display: grid; gap: 15px; 
-    max-width: 500px; margin: 0 auto; color: white; box-shadow: 0 20px 50px rgba(0,0,0,0.2); 
+    background: var(--orange); padding: 35px 25px; border-radius: 30px; 
+    display: grid; gap: 15px; max-width: 500px; margin: 0 auto; 
+    color: white; box-shadow: 0 20px 50px rgba(0,0,0,0.2); 
     scroll-margin-top: 80px; 
   }
   
-  input, select { padding: 16px; border: none; border-radius: 12px; font-size: 16px; width: 100%; box-sizing: border-box; font-weight: 500; }
+  input, select { 
+    padding: 16px; border: none; border-radius: 12px; font-size: 16px; 
+    width: 100%; box-sizing: border-box; font-weight: 500; outline: none;
+  }
 
-  .pago-box { background: white; color: var(--text-dark); padding: 20px; border-radius: 20px; text-align: center; margin: 5px 0; }
-  .pago-box .monto-label { margin: 0; color: #777; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; }
-  .pago-box .monto { font-size: 2.8rem; font-weight: 900; color: var(--orange); display: block; line-height: 1.1; }
+  .pago-box { 
+    background: white; color: var(--text-dark); padding: 20px; 
+    border-radius: 20px; text-align: center; margin: 5px 0; 
+  }
+  
+  .monto { font-size: 2.8rem; font-weight: 900; color: var(--orange); display: block; line-height: 1.1; margin-top: 5px;}
 
   .btn-final { 
-    background: white; color: var(--orange); font-weight: 800; padding: 20px; border: none; 
-    border-radius: 15px; cursor: pointer; font-size: 1.3rem; width: 100%; text-transform: uppercase;
+    background: white; color: var(--orange); font-weight: 800; 
+    padding: 20px; border: none; border-radius: 15px; cursor: pointer; 
+    font-size: 1.3rem; width: 100%; text-transform: uppercase; 
+    transition: 0.3s;
+    animation: glow 3s infinite;
+  }
+  
+  @keyframes glow {
+    0% { box-shadow: 0 0 5px rgba(255,255,255,0.2); }
+    50% { box-shadow: 0 0 20px rgba(255,255,255,0.6); }
+    100% { box-shadow: 0 0 5px rgba(255,255,255,0.2); }
   }
 
-  .floating-actions { position: fixed; bottom: 15px; right: 15px; display: flex; flex-direction: column; gap: 10px; z-index: 2000; align-items: flex-end; }
+  .btn-final:active { transform: scale(0.95); }
 
   .whatsapp-btn { 
-    background-color: #25d366; color: white; border-radius: 50px; padding: 10px 18px; 
-    font-weight: 700; text-decoration: none; box-shadow: 0 6px 15px rgba(0,0,0,0.15); 
-    display: flex; align-items: center; gap: 8px; font-size: 0.9rem;
-  }
-
-  .order-now-btn {
-    background-color: var(--orange); color: white; border-radius: 50px; padding: 10px 18px; 
-    font-weight: 800; text-decoration: none; box-shadow: 0 8px 20px rgba(255, 140, 0, 0.3); 
-    display: flex; align-items: center; gap: 8px; font-size: 0.95rem; border: 1.5px solid white;
+    position: fixed; bottom: 20px; right: 20px;
+    background-color: #25d366; color: white; border-radius: 50px; 
+    padding: 12px 25px; font-weight: 700; text-decoration: none; 
+    display: flex; align-items: center; gap: 8px; box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    z-index: 2000;
   }
 
   @media (min-width: 768px) {
-    header { padding: 20px 8%; }
-    .hero { padding: 180px 10% 100px; border-radius: 0; }
     .hero h1 { font-size: 4rem; }
-    section { padding: 90px 10%; }
     .producto-grid { grid-template-columns: repeat(2, 1fr); }
     .clientes-grid { grid-template-columns: repeat(4, 1fr); }
-    .order-now-btn { display: none; } 
   }
 </style>
 </head>
@@ -123,7 +215,7 @@
   <p>Del campo a tu mesa, con la calidad de siempre.</p>
 </div>
 
-<section id="quienes-somos">
+<section id="quienes-somos" class="reveal">
   <h2>Quiénes Somos</h2>
   <div class="nosotros-text">
     <p>Tenemos <strong>25 años</strong> llevando el mejor jugo de naranja a los hoteles y casinos más importantes de Lima.</p>
@@ -131,16 +223,16 @@
 </section>
 
 <section id="producto" style="background-color: var(--bg-light);">
-  <h2>Nuestros Pilares</h2>
+  <h2 class="reveal">Nuestros Pilares</h2>
   <div class="producto-grid">
-    <div class="producto-item"><h3><span>🍊</span> Pureza</h3><p>100% natural sin agua ni azúcar.</p></div>
-    <div class="producto-item"><h3><span>⏱️</span> Frescura</h3><p>Exprimido y entregado hoy mismo.</p></div>
-    <div class="producto-item"><h3><span>❄️</span> Frío</h3><p>Cadena de frío de 4°C garantizada.</p></div>
-    <div class="producto-item"><h3><span>🗓️</span> Vida Útil</h3><p>5 días de frescura natural.</p></div>
+    <div class="producto-item reveal"><h3><span>🍊</span> Pureza</h3><p>Jugo 100% natural sin agua ni azúcares añadidos.</p></div>
+    <div class="producto-item reveal"><h3><span>⏱️</span> Frescura</h3><p>Exprimido y entregado el mismo día.</p></div>
+    <div class="producto-item reveal"><h3><span>❄️</span> Frío</h3><p>Mantenemos los 4°C hasta tu puerta.</p></div>
+    <div class="producto-item reveal"><h3><span>🗓️</span> Vida Útil</h3><p>5 días de frescura natural garantizada.</p></div>
   </div>
 </section>
 
-<section id="clientes">
+<section id="clientes" class="reveal">
   <h2>Confían en nosotros</h2>
   <ul class="clientes-grid">
     <li>JW Marriott</li><li>Swissôtel</li><li>Casa Andina</li><li>Iberostar</li>
@@ -148,7 +240,7 @@
   </ul>
 </section>
 
-<section id="pedido">
+<section id="pedido" class="reveal">
   <h2>Realiza tu pedido</h2>
   <form id="pedidoForm">
     <input id="nombre" type="text" placeholder="Nombre completo o Empresa" required>
@@ -161,13 +253,13 @@
     </select>
     <input id="direccion" type="text" placeholder="Dirección exacta de entrega" required>
     
-    <div style="display:flex; justify-content: space-between; align-items: center; background:rgba(255,255,255,0.15); padding:15px; border-radius:12px; border: 1px solid rgba(255,255,255,0.3);">
+    <div style="display:flex; justify-content: space-between; align-items: center; background:rgba(255,255,255,0.15); padding:15px; border-radius:12px;">
       <span style="font-weight: 700; color: white;">Galones (S/ 25.00 c/u):</span>
-      <input id="cantidad" type="number" min="1" value="1" style="width:60px; font-weight: 900; text-align: center;" onchange="document.getElementById('montoVer').innerText = (this.value * 25).toFixed(2)">
+      <input id="cantidad" type="number" min="1" value="1" style="width:70px; text-align: center;" onchange="document.getElementById('montoVer').innerText = (this.value * 25).toFixed(2)">
     </div>
 
     <div class="pago-box">
-      <p class="monto-label">Total a pagar</p>
+      <p style="margin:0; color:#777; font-size:0.85rem; font-weight:700; text-transform:uppercase;">Total a pagar</p>
       <span class="monto">S/ <span id="montoVer">25.00</span></span>
     </div>
 
@@ -175,56 +267,47 @@
   </form>
 </section>
 
-<div class="floating-actions">
-  <a href="#pedido" class="order-now-btn"><span>🛒 PEDIR YA</span></a>
-  <a href="https://wa.me/51981226618" class="whatsapp-btn" target="_blank"><span>WhatsApp</span></a>
-</div>
+<a href="https://wa.me/51981226618" class="whatsapp-btn" target="_blank"><span>¿Dudas? WhatsApp</span></a>
 
-<script src="https://checkout.culqi.com/js/v4"></script>
 <script>
-  // 1. REEMPLAZA ESTO CON TU LLAVE PÚBLICA DE CULQI REAL
-  Culqi.publicKey = 'TU_PUBLIC_KEY_DE_CULQI';
+  // Script para animaciones de Scroll Reveal
+  function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+    for (var i = 0; i < reveals.length; i++) {
+      var windowHeight = window.innerHeight;
+      var elementTop = reveals[i].getBoundingClientRect().top;
+      if (elementTop < windowHeight - 100) {
+        reveals[i].classList.add("active");
+      }
+    }
+  }
+  window.addEventListener("scroll", reveal);
+  reveal();
 
-  let datosTemporales = {}; 
+  // ENVÍO DE DATOS Y GESTIÓN DE PASARELA
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwo1fKJ7upkqnNAghsS-q9OO6ORk26wWNSyu4rTBX1Uh2Ph0iio1vJy0pDDIVa85Saw/exec';
 
   document.getElementById('pedidoForm').onsubmit = function(e){
     e.preventDefault();
-    const cant = document.getElementById("cantidad").value;
-    const totalSoles = cant * 25;
+    
+    const formData = new FormData();
+    formData.append('nombre', document.getElementById('nombre').value);
+    formData.append('telf', document.getElementById('telefono').value);
+    formData.append('dist', document.getElementById('distrito').value);
+    formData.append('dir', document.getElementById('direccion').value);
+    formData.append('cant', document.getElementById('cantidad').value);
+    formData.append('total', document.getElementById('montoVer').innerText);
 
-    datosTemporales = {
-      nombre: document.getElementById('nombre').value,
-      telf: document.getElementById('telefono').value,
-      dist: document.getElementById('distrito').value,
-      dir: document.getElementById('direccion').value,
-      cant: cant,
-      total: totalSoles.toFixed(2)
-    };
+    document.getElementById('btnSubmit').disabled = true;
+    document.getElementById('btnSubmit').innerText = 'PROCESANDO PAGO...';
 
-    Culqi.settings({ title: "Frutarole", currency: "PEN", amount: totalSoles * 100 });
-    Culqi.options({ paymentMethods: { tarjeta: true, yape: true, bancaMovil: true, agente: true } });
-    Culqi.open();
+    // 1. Registro silencioso en Google Sheets
+    fetch(SCRIPT_URL, { method: 'POST', body: formData, mode: 'no-cors' });
+
+    // 2. Aquí es donde Izipay Online entrará en acción
+    // Por ahora lanzamos un aviso para que sepas que el clic funciona
   };
-
-  function culqi() {
-    if (Culqi.token) { 
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbwo1fKJ7upkqnNAghsS-q9OO6ORk26wWNSyu4rTBX1Uh2Ph0iio1vJy0pDDIVa85Saw/exec';
-      const formData = new FormData();
-      for(const key in datosTemporales){ formData.append(key, datosTemporales[key]); }
-
-      document.getElementById('btnSubmit').disabled = true;
-      document.getElementById('btnSubmit').innerText = 'PROCESANDO...';
-
-      fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
-        .then(() => {
-          alert("¡Pago exitoso! Pedido registrado correctamente.");
-          location.reload(); 
-        })
-        .catch(() => alert("Error al registrar pedido en el sistema. Contáctanos por WhatsApp."));
-    } else { 
-      alert("Error en el pago: " + Culqi.error.message); 
-    }
-  }
 </script>
+
 </body>
 </html>
