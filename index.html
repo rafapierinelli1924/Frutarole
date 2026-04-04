@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Frutarole | Jugo de Naranja Premium</title>
 
+<script 
+  src="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/stable/kr-payment-form.min.js" 
+  kr-public-key="49851420:publickey_Sk8tqnIMR5uLyBoaYdWfvyHrv0qyexBuaajj3SL2sLeMN" 
+  kr-post-url-success="https://rafapierinelli1924.github.io/Frutarole/">
+</script>
+<link rel="stylesheet" href="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/stable/kr-payment-form.css">
+
 <style>
   :root { 
     --orange: #FF8C00; 
@@ -65,7 +72,6 @@
   
   @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
 
-  /* Animación de entrada al bajar */
   .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -120,7 +126,6 @@
     cursor: pointer;
   }
   
-  /* --- EFECTO HOVER ICONOS --- */
   .producto-item:hover { 
     transform: translateY(-10px); 
     border-color: var(--orange);
@@ -270,7 +275,6 @@
 <a href="https://wa.me/51981226618" class="whatsapp-btn" target="_blank"><span>¿Dudas? WhatsApp</span></a>
 
 <script>
-  // Script para animaciones de Scroll Reveal
   function reveal() {
     var reveals = document.querySelectorAll(".reveal");
     for (var i = 0; i < reveals.length; i++) {
@@ -284,19 +288,19 @@
   window.addEventListener("scroll", reveal);
   reveal();
 
-  // ENVÍO DE DATOS Y GESTIÓN DE PASARELA
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwo1fKJ7upkqnNAghsS-q9OO6ORk26wWNSyu4rTBX1Uh2Ph0iio1vJy0pDDIVa85Saw/exec';
 
   document.getElementById('pedidoForm').onsubmit = function(e){
     e.preventDefault();
     
+    const totalMonto = document.getElementById('montoVer').innerText;
     const formData = new FormData();
     formData.append('nombre', document.getElementById('nombre').value);
     formData.append('telf', document.getElementById('telefono').value);
     formData.append('dist', document.getElementById('distrito').value);
     formData.append('dir', document.getElementById('direccion').value);
     formData.append('cant', document.getElementById('cantidad').value);
-    formData.append('total', document.getElementById('montoVer').innerText);
+    formData.append('total', totalMonto);
 
     document.getElementById('btnSubmit').disabled = true;
     document.getElementById('btnSubmit').innerText = 'PROCESANDO PAGO...';
@@ -304,8 +308,21 @@
     // 1. Registro silencioso en Google Sheets
     fetch(SCRIPT_URL, { method: 'POST', body: formData, mode: 'no-cors' });
 
-    // 2. Aquí es donde Izipay Online entrará en acción
-    // Por ahora lanzamos un aviso para que sepas que el clic funciona
+    // 2. ACTIVACIÓN DE IZIPAY ONLINE (Pop-in)
+    KR.openPopin({
+      amount: Math.round(parseFloat(totalMonto) * 100), // Izipay lee en céntimos
+      currency: 'PEN',
+      orderId: 'FRUT-' + Date.now(),
+      customer: {
+        email: 'ventas@frutarole.com'
+      }
+    });
+    
+    // Resetear botón por si cierran la pasarela
+    setTimeout(() => {
+        document.getElementById('btnSubmit').disabled = false;
+        document.getElementById('btnSubmit').innerText = 'PAGAR AHORA 💳';
+    }, 5000);
   };
 </script>
 
