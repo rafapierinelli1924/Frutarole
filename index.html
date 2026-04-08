@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Frutarole | Jugo de Naranja Premium</title>
 
-<!-- PASO 1: Librería Krypton de Izipay -->
+<!-- Librería oficial de Izipay -->
 <script
   src="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/stable/kr-payment-form.min.js"
   kr-public-key="49851420:publickey_Sk8tqnIMR5uLyBoaYdWfvyHrv0qyexBuaajj3SL2sLeMN"
@@ -18,154 +18,61 @@
 <style>
   :root {
     --orange: #FF8C00;
-    --orange-dark: #e67e00;
     --text-dark: #222;
     --text-light: #fff;
     --bg-light: #f9f9f9;
     --shadow: 0 10px 30px rgba(0,0,0,0.1);
   }
+  body { margin:0; font-family:'Segoe UI',Roboto,Arial,sans-serif; background:#fff; color:var(--text-dark); overflow-x:hidden; scroll-behavior:smooth; -webkit-font-smoothing:antialiased; }
+  header { display:flex; justify-content:center; align-items:center; padding:15px 5%; background:var(--orange); color:#fff; position:fixed; width:100%; z-index:1000; box-sizing:border-box; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+  .logo { font-weight:900; font-size:1.8rem; letter-spacing:-1px; text-transform:uppercase; display:flex; align-items:center; gap:6px; }
+  .logo-icon { background:#fff; color:var(--orange); width:30px; height:30px; border-radius:50%; display:inline-flex; justify-content:center; align-items:center; font-size:1.2rem; animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+  .reveal { opacity:0; transform:translateY(30px); transition:all 0.8s ease-out; }
+  .reveal.active { opacity:1; transform:translateY(0); }
+  .hero { padding:130px 8% 60px; text-align:center; background:linear-gradient(135deg,#FF8C00,#ffaa33); color:#fff; border-bottom-left-radius:40px; border-bottom-right-radius:40px; }
+  .hero h1 { font-size:2.6rem; font-weight:900; line-height:1.1; margin:0; text-shadow:1px 1px 3px rgba(0,0,0,0.15); }
+  .hero p { font-size:1.1rem; margin-top:15px; opacity:.95; font-weight:500; }
+  section { padding:60px 8%; }
+  h2 { font-size:2.2rem; font-weight:800; margin-bottom:35px; color:var(--orange); text-align:center; }
+  .nosotros-text { max-width:700px; margin:0 auto; text-align:center; font-size:1.1rem; color:#444; background:#fff; padding:30px; border-radius:20px; box-shadow:var(--shadow); }
+  .producto-grid { display:grid; grid-template-columns:1fr; gap:20px; margin-top:40px; }
+  .producto-item { background:#fff; padding:35px 25px; border-radius:20px; text-align:center; border:1px solid #eee; transition:all 0.4s; box-shadow:var(--shadow); cursor:pointer; }
+  .producto-item:hover { transform:translateY(-10px); border-color:var(--orange); }
+  .producto-item h3 { font-size:1.4rem; color:var(--orange); margin-bottom:10px; display:flex; align-items:center; justify-content:center; gap:8px; }
+  .producto-item h3 span { font-size:2rem; }
+  .clientes-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:15px; list-style:none; padding:0; max-width:800px; margin:0 auto; }
+  .clientes-grid li { padding:18px; background:#fff; border-radius:15px; text-align:center; font-weight:700; color:var(--orange); border:1px solid #f0f0f0; transition:all 0.3s; box-shadow:0 3px 8px rgba(0,0,0,0.04); }
+  .clientes-grid li:hover { background:var(--orange); color:#fff; transform:scale(1.05); }
 
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background: #ffffff;
-    line-height: 1.5;
-    color: var(--text-dark);
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  header {
-    display: flex; justify-content: center; align-items: center;
-    padding: 15px 5%; background: var(--orange); color: var(--text-light);
-    position: fixed; width: 100%; z-index: 1000; box-sizing: border-box;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
-
-  .logo {
-    font-weight: 900; font-size: 1.8rem; letter-spacing: -1px;
-    text-transform: uppercase; display: flex; align-items: center; gap: 6px;
-  }
-
-  .logo-icon {
-    background-color: white; color: var(--orange); width: 30px; height: 30px;
-    border-radius: 50%; display: inline-flex; justify-content: center;
-    align-items: center; font-size: 1.2rem; animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-
-  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-  .reveal.active { opacity: 1; transform: translateY(0); }
-
-  .hero {
-    padding: 130px 8% 60px; text-align: center;
-    background: linear-gradient(135deg, #FF8C00 0%, #ffaa33 100%);
-    color: white; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px;
-  }
-  .hero h1 { font-size: 2.6rem; font-weight: 900; line-height: 1.1; margin: 0; text-shadow: 1px 1px 3px rgba(0,0,0,0.15); }
-  .hero p { font-size: 1.1rem; margin-top: 15px; opacity: 0.95; font-weight: 500; }
-
-  section { padding: 60px 8%; position: relative; }
-  h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 35px; color: var(--orange); text-align: center; letter-spacing: -0.5px; }
-
-  .nosotros-text {
-    max-width: 700px; margin: 0 auto; text-align: center;
-    font-size: 1.1rem; color: #444; background: white;
-    padding: 30px; border-radius: 20px; box-shadow: var(--shadow);
-  }
-
-  .producto-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 40px; }
-  .producto-item {
-    background: #fff; padding: 35px 25px; border-radius: 20px;
-    text-align: center; border: 1px solid #eee;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: var(--shadow); cursor: pointer;
-  }
-  .producto-item:hover { transform: translateY(-10px); border-color: var(--orange); box-shadow: 0 15px 35px rgba(255,140,0,0.15); }
-  .producto-item h3 { font-size: 1.4rem; color: var(--orange); margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.3s ease; }
-  .producto-item:hover h3 { transform: scale(1.15); }
-  .producto-item h3 span { font-size: 2rem; }
-
-  .clientes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; list-style: none; padding: 0; max-width: 800px; margin: 0 auto; }
-  .clientes-grid li {
-    padding: 18px; background: #fff; border-radius: 15px; text-align: center;
-    font-weight: 700; color: var(--orange); border: 1px solid #f0f0f0;
-    font-size: 0.95rem; box-shadow: 0 3px 8px rgba(0,0,0,0.04); transition: all 0.3s ease;
-  }
-  .clientes-grid li:hover { background: var(--orange); color: white; transform: scale(1.05); }
-
-  #pedidoForm {
-    background: var(--orange); padding: 35px 25px; border-radius: 30px;
-    display: grid; gap: 15px; max-width: 500px; margin: 0 auto;
-    color: white; box-shadow: 0 20px 50px rgba(0,0,0,0.2); scroll-margin-top: 80px;
-  }
-
-  input, select {
-    padding: 16px; border: none; border-radius: 12px; font-size: 16px;
-    width: 100%; box-sizing: border-box; font-weight: 500; outline: none;
-  }
-
-  .pago-box { background: white; color: var(--text-dark); padding: 20px; border-radius: 20px; text-align: center; margin: 5px 0; }
-  .monto { font-size: 2.8rem; font-weight: 900; color: var(--orange); display: block; line-height: 1.1; margin-top: 5px; }
-
-  .btn-final {
-    background: white; color: var(--orange); font-weight: 800;
-    padding: 20px; border: none; border-radius: 15px; cursor: pointer;
-    font-size: 1.3rem; width: 100%; text-transform: uppercase;
-    transition: 0.3s; animation: glow 3s infinite;
-  }
-  @keyframes glow { 0%,100% { box-shadow: 0 0 5px rgba(255,255,255,0.2); } 50% { box-shadow: 0 0 20px rgba(255,255,255,0.6); } }
-  .btn-final:active { transform: scale(0.95); }
-  .btn-final:disabled { opacity: 0.7; cursor: not-allowed; animation: none; }
+  /* Formulario pedido */
+  #pedidoForm { background:var(--orange); padding:35px 25px; border-radius:30px; display:grid; gap:15px; max-width:500px; margin:0 auto; color:#fff; box-shadow:0 20px 50px rgba(0,0,0,0.2); scroll-margin-top:80px; }
+  input, select { padding:16px; border:none; border-radius:12px; font-size:16px; width:100%; box-sizing:border-box; font-weight:500; outline:none; }
+  .pago-box { background:#fff; color:var(--text-dark); padding:20px; border-radius:20px; text-align:center; }
+  .monto { font-size:2.8rem; font-weight:900; color:var(--orange); display:block; line-height:1.1; margin-top:5px; }
+  .btn-final { background:#fff; color:var(--orange); font-weight:800; padding:20px; border:none; border-radius:15px; cursor:pointer; font-size:1.3rem; width:100%; text-transform:uppercase; transition:0.3s; animation:glow 3s infinite; }
+  @keyframes glow { 0%,100%{box-shadow:0 0 5px rgba(255,255,255,0.2)} 50%{box-shadow:0 0 20px rgba(255,255,255,0.6)} }
+  .btn-final:disabled { opacity:.7; cursor:not-allowed; animation:none; }
 
   /* Loader */
-  #loader {
-    display: none; text-align: center; color: white; font-weight: 700; padding: 10px 0;
-  }
-  .spinner {
-    width: 32px; height: 32px; border: 3px solid rgba(255,255,255,0.3);
-    border-top-color: white; border-radius: 50%; margin: 8px auto 0;
-    animation: spin 0.8s linear infinite;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
+  #loader { display:none; text-align:center; color:#fff; font-weight:700; padding:10px 0; }
+  .spinner { width:32px; height:32px; border:3px solid rgba(255,255,255,0.3); border-top-color:#fff; border-radius:50%; margin:8px auto 0; animation:spin 0.8s linear infinite; }
+  @keyframes spin { to{transform:rotate(360deg)} }
 
-  /* Sección de pasarela incrustada */
-  #checkout-section {
-    display: none; max-width: 500px; margin: 25px auto 0;
-    background: white; border-radius: 20px; padding: 30px;
-    box-shadow: var(--shadow);
-  }
-  #checkout-section h3 { text-align: center; color: var(--orange); margin: 0 0 20px; font-size: 1.2rem; }
+  /* Pasarela incrustada */
+  #checkout-section { display:none; max-width:500px; margin:25px auto 0; background:#fff; border-radius:20px; padding:30px; box-shadow:var(--shadow); }
+  #checkout-section h3 { text-align:center; color:var(--orange); margin:0 0 20px; font-size:1.2rem; }
 
-  /* Error */
-  #error-msg {
-    display: none; background: #fff3f3; border: 1px solid #ffcccc;
-    color: #cc0000; border-radius: 12px; padding: 15px;
-    text-align: center; font-size: 0.9rem; margin-top: 12px; max-width: 500px; margin-left: auto; margin-right: auto;
-  }
+  /* Mensajes */
+  #error-msg { display:none; background:#fff3f3; border:1px solid #ffcccc; color:#cc0000; border-radius:12px; padding:15px; text-align:center; font-size:.9rem; margin:12px auto 0; max-width:500px; line-height:1.6; }
+  #success-msg { display:none; background:#f0fff4; border:1px solid #b2f5c8; color:#276749; border-radius:12px; padding:20px; text-align:center; font-size:1rem; margin:12px auto 0; max-width:500px; font-weight:700; }
 
-  /* Éxito */
-  #success-msg {
-    display: none; background: #f0fff4; border: 1px solid #b2f5c8;
-    color: #276749; border-radius: 12px; padding: 20px;
-    text-align: center; font-size: 1rem; margin-top: 12px; max-width: 500px; margin-left: auto; margin-right: auto;
-    font-weight: 700;
-  }
+  .whatsapp-btn { position:fixed; bottom:20px; right:20px; background:#25d366; color:#fff; border-radius:50px; padding:12px 25px; font-weight:700; text-decoration:none; display:flex; align-items:center; gap:8px; box-shadow:0 6px 15px rgba(0,0,0,0.15); z-index:2000; }
 
-  .whatsapp-btn {
-    position: fixed; bottom: 20px; right: 20px;
-    background-color: #25d366; color: white; border-radius: 50px;
-    padding: 12px 25px; font-weight: 700; text-decoration: none;
-    display: flex; align-items: center; gap: 8px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.15); z-index: 2000;
-  }
-
-  @media (min-width: 768px) {
-    .hero h1 { font-size: 4rem; }
-    .producto-grid { grid-template-columns: repeat(2, 1fr); }
-    .clientes-grid { grid-template-columns: repeat(4, 1fr); }
+  @media(min-width:768px) {
+    .hero h1 { font-size:4rem; }
+    .producto-grid { grid-template-columns:repeat(2,1fr); }
+    .clientes-grid { grid-template-columns:repeat(4,1fr); }
   }
 </style>
 </head>
@@ -187,7 +94,7 @@
   </div>
 </section>
 
-<section id="producto" style="background-color: var(--bg-light);">
+<section id="producto" style="background-color:var(--bg-light)">
   <h2 class="reveal">Nuestros Pilares</h2>
   <div class="producto-grid">
     <div class="producto-item reveal"><h3><span>🍊</span> Pureza</h3><p>Jugo 100% natural sin agua ni azúcares añadidos.</p></div>
@@ -208,7 +115,6 @@
 <section id="pedido" class="reveal">
   <h2>Realiza tu pedido</h2>
 
-  <!-- FORMULARIO DE DATOS DEL CLIENTE -->
   <form id="pedidoForm">
     <input id="nombre"    type="text" placeholder="Nombre completo o Empresa" required>
     <input id="telefono"  type="tel"  placeholder="WhatsApp (9 dígitos)" required pattern="[0-9]{9}">
@@ -219,27 +125,19 @@
       <option>Surco</option><option>Surquillo</option><option>Magdalena</option>
     </select>
     <input id="direccion" type="text" placeholder="Dirección exacta de entrega" required>
-
     <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.15);padding:15px;border-radius:12px;">
-      <span style="font-weight:700;color:white;">Galones (S/ 25.00 c/u):</span>
-      <input id="cantidad" type="number" min="1" value="1" style="width:70px;text-align:center;" oninput="actualizarMonto(this.value)">
+      <span style="font-weight:700">Galones (S/ 25.00 c/u):</span>
+      <input id="cantidad" type="number" min="1" value="1" style="width:70px;text-align:center" oninput="actualizarMonto(this.value)">
     </div>
-
     <div class="pago-box">
-      <p style="margin:0;color:#777;font-size:0.85rem;font-weight:700;text-transform:uppercase;">Total a pagar</p>
+      <p style="margin:0;color:#777;font-size:.85rem;font-weight:700;text-transform:uppercase">Total a pagar</p>
       <span class="monto">S/ <span id="montoVer">25.00</span></span>
     </div>
-
-    <div id="loader">
-      Preparando pasarela de pago...
-      <div class="spinner"></div>
-    </div>
-
+    <div id="loader">Preparando pasarela...<div class="spinner"></div></div>
     <button type="submit" class="btn-final" id="btnSubmit">PAGAR AHORA 💳</button>
   </form>
 
-  <!-- PASO 2: Formulario incrustado de Izipay -->
-  <!-- Se muestra después de obtener el formtoken del servidor PHP -->
+  <!-- Formulario incrustado de Izipay — aparece tras generar el formtoken -->
   <div id="checkout-section">
     <h3>💳 Ingresa los datos de tu tarjeta</h3>
     <div id="micuentawebstd_rest_wrapper">
@@ -257,182 +155,180 @@
   <div id="success-msg"></div>
 </section>
 
-<a href="https://wa.me/51981226618" class="whatsapp-btn" target="_blank">
-  <span>¿Dudas? WhatsApp</span>
-</a>
+<a href="https://wa.me/51981226618" class="whatsapp-btn" target="_blank">¿Dudas? WhatsApp</a>
 
 <script>
-  // ============================================================
-  // CONFIGURACIÓN
-  // Cambia BACKEND_URL por la URL de tu hosting InfinityFree
-  // Ejemplo: https://tudominio.infinityfreeapp.com
-  // ============================================================
-  const BACKEND_URL  = 'https://frutarole-pedidos.infinityfreeapp.com';
-  const SCRIPT_URL   = 'https://script.google.com/macros/s/AKfycbwo1fKJ7upkqnNAghsS-q9OO6ORk26wWNSyu4rTBX1Uh2Ph0iio1vJy0pDDIVa85Saw/exec';
+// ============================================================
+// PROXY CORS GRATUITO — resuelve el problema sin servidor propio
+// Redirige la petición a la API de Izipay evitando bloqueos CORS
+// ============================================================
+const PROXY       = 'https://corsproxy.io/?';
+const IZIPAY_URL  = 'https://api.micuentaweb.pe/api-payment/V4/Charge/CreatePayment';
+const USERNAME    = '49851420';
+const PASSWORD    = 'prodpassword_ivVKXNlnniK09zPbN7FSHHvZzBkezmfHg1Nazt50n8W72';
+const PUBLIC_KEY  = '49851420:publickey_Sk8tqnIMR5uLyBoaYdWfvyHrv0qyexBuaajj3SL2sLeMN';
+const HMAC_KEY    = 'cyzh2F0njvT4y5Pi44CmgMsRqR4cH0nD3GNug8YXTqN72';
+const SCRIPT_URL  = 'https://script.google.com/macros/s/AKfycbwo1fKJ7upkqnNAghsS-q9OO6ORk26wWNSyu4rTBX1Uh2Ph0iio1vJy0pDDIVa85Saw/exec';
 
-  // ============================================================
-  // Scroll reveal
-  // ============================================================
-  function reveal() {
-    document.querySelectorAll('.reveal').forEach(el => {
-      if (el.getBoundingClientRect().top < window.innerHeight - 100) {
-        el.classList.add('active');
+// Scroll reveal
+function reveal() {
+  document.querySelectorAll('.reveal').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
+  });
+}
+window.addEventListener('scroll', reveal);
+reveal();
+
+function actualizarMonto(v) {
+  document.getElementById('montoVer').innerText = (Math.max(1, parseInt(v)||1) * 25).toFixed(2);
+}
+
+function mostrarError(msg) {
+  const el = document.getElementById('error-msg');
+  el.innerHTML = msg;
+  el.style.display = 'block';
+  el.scrollIntoView({ behavior:'smooth', block:'center' });
+}
+
+function mostrarExito(msg) {
+  const el = document.getElementById('success-msg');
+  el.innerHTML = msg;
+  el.style.display = 'block';
+  document.getElementById('checkout-section').style.display = 'none';
+  el.scrollIntoView({ behavior:'smooth', block:'center' });
+}
+
+function resetBoton() {
+  const btn = document.getElementById('btnSubmit');
+  btn.disabled  = false;
+  btn.style.display = 'block';
+  btn.innerText = 'PAGAR AHORA 💳';
+  document.getElementById('loader').style.display = 'none';
+}
+
+// ============================================================
+// GENERAR FORMTOKEN — llama a Izipay vía proxy CORS
+// ============================================================
+async function generarFormtoken(datos) {
+  const auth = btoa(USERNAME + ':' + PASSWORD);
+  const res  = await fetch(PROXY + encodeURIComponent(IZIPAY_URL), {
+    method:  'POST',
+    headers: {
+      'Authorization': 'Basic ' + auth,
+      'Content-Type':  'application/json',
+    },
+    body: JSON.stringify(datos)
+  });
+
+  if (!res.ok) throw new Error('Error HTTP ' + res.status + ' al contactar Izipay');
+
+  const data = await res.json();
+  if (!data.answer || !data.answer.formToken) {
+    throw new Error('Izipay no devolvió un formToken. Detalle: ' + JSON.stringify(data));
+  }
+  return data.answer.formToken;
+}
+
+// ============================================================
+// VALIDAR HMAC en el frontend (sin servidor)
+// ============================================================
+async function validarHmac(krAnswer, krHash) {
+  const enc     = new TextEncoder();
+  const keyData = enc.encode(HMAC_KEY);
+  const msgData = enc.encode(krAnswer);
+  const key     = await crypto.subtle.importKey('raw', keyData, { name:'HMAC', hash:'SHA-256' }, false, ['sign']);
+  const sig     = await crypto.subtle.sign('HMAC', key, msgData);
+  const hex     = Array.from(new Uint8Array(sig)).map(b => b.toString(16).padStart(2,'0')).join('');
+  return hex === krHash;
+}
+
+// ============================================================
+// SUBMIT DEL FORMULARIO
+// ============================================================
+document.getElementById('pedidoForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const nombre   = document.getElementById('nombre').value.trim();
+  const telefono = document.getElementById('telefono').value.trim();
+  const distrito = document.getElementById('distrito').value;
+  const direccion= document.getElementById('direccion').value.trim();
+  const cantidad = Math.max(1, parseInt(document.getElementById('cantidad').value)||1);
+  const totalStr = document.getElementById('montoVer').innerText;
+  const totalNum = parseFloat(totalStr);
+
+  // Limpiar mensajes anteriores
+  document.getElementById('error-msg').style.display   = 'none';
+  document.getElementById('success-msg').style.display = 'none';
+  document.getElementById('checkout-section').style.display = 'none';
+
+  // Mostrar loader
+  const btn = document.getElementById('btnSubmit');
+  btn.disabled  = true;
+  btn.innerText = 'PROCESANDO...';
+  document.getElementById('loader').style.display = 'block';
+
+  // Registrar en Google Sheets (silencioso)
+  try {
+    const fd = new FormData();
+    fd.append('nombre', nombre); fd.append('telf', telefono);
+    fd.append('dist', distrito); fd.append('dir', direccion);
+    fd.append('cant', cantidad); fd.append('total', totalStr);
+    fetch(SCRIPT_URL, { method:'POST', body:fd, mode:'no-cors' });
+  } catch(_) {}
+
+  // Llamar a Izipay para obtener el formtoken
+  try {
+    const formToken = await generarFormtoken({
+      amount:   Math.round(totalNum * 100),
+      currency: 'PEN',
+      orderId:  'FRUT-' + Date.now(),
+      customer: {
+        email:       'cliente@frutarole.com',
+        firstName:   nombre.split(' ')[0] || nombre,
+        lastName:    nombre.split(' ').slice(1).join(' ') || '',
+        phoneNumber: telefono,
       }
     });
-  }
-  window.addEventListener('scroll', reveal);
-  reveal();
 
-  // ============================================================
-  // Actualizar monto
-  // ============================================================
-  function actualizarMonto(val) {
-    const n = Math.max(1, parseInt(val) || 1);
-    document.getElementById('montoVer').innerText = (n * 25).toFixed(2);
-  }
-
-  // ============================================================
-  // Helpers UI
-  // ============================================================
-  function mostrarError(msg) {
-    const el = document.getElementById('error-msg');
-    el.innerHTML = msg;
-    el.style.display = 'block';
-    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-
-  function mostrarExito(msg) {
-    const el = document.getElementById('success-msg');
-    el.innerHTML = msg;
-    el.style.display = 'block';
-    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-
-  function resetBoton() {
-    const btn = document.getElementById('btnSubmit');
-    btn.disabled = false;
-    btn.innerText = 'PAGAR AHORA 💳';
+    // Inyectar formtoken y mostrar pasarela
+    document.querySelector('.kr-embedded').setAttribute('kr-form-token', formToken);
     document.getElementById('loader').style.display = 'none';
-  }
+    btn.style.display = 'none';
+    document.getElementById('checkout-section').style.display = 'block';
+    document.getElementById('checkout-section').scrollIntoView({ behavior:'smooth', block:'start' });
 
-  // ============================================================
-  // SUBMIT: recoger datos → llamar al PHP → mostrar pasarela
-  // ============================================================
-  document.getElementById('pedidoForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
+    // Escuchar resultado del pago
+    KR.onSubmit(async (paymentData) => {
+      try {
+        const valido = await validarHmac(paymentData.rawClientAnswer, paymentData.hash);
+        if (!valido) { mostrarError('⚠️ Firma de pago inválida. Contacta soporte.'); return false; }
 
-    const nombre   = document.getElementById('nombre').value.trim();
-    const telefono = document.getElementById('telefono').value.trim();
-    const distrito = document.getElementById('distrito').value;
-    const direccion= document.getElementById('direccion').value.trim();
-    const cantidad = Math.max(1, parseInt(document.getElementById('cantidad').value) || 1);
-    const totalStr = document.getElementById('montoVer').innerText;
-    const totalNum = parseFloat(totalStr);
-
-    // Ocultar mensajes previos
-    document.getElementById('error-msg').style.display   = 'none';
-    document.getElementById('success-msg').style.display = 'none';
-    document.getElementById('checkout-section').style.display = 'none';
-
-    // Deshabilitar botón y mostrar loader
-    const btn = document.getElementById('btnSubmit');
-    btn.disabled = true;
-    btn.innerText = 'PROCESANDO...';
-    document.getElementById('loader').style.display = 'block';
-
-    // 1. Registrar en Google Sheets (silencioso, sin bloquear)
-    try {
-      const fd = new FormData();
-      fd.append('nombre', nombre);
-      fd.append('telf', telefono);
-      fd.append('dist', distrito);
-      fd.append('dir', direccion);
-      fd.append('cant', cantidad);
-      fd.append('total', totalStr);
-      fetch(SCRIPT_URL, { method: 'POST', body: fd, mode: 'no-cors' });
-    } catch (_) {}
-
-    // 2. Solicitar formtoken al servidor PHP
-    try {
-      const res = await fetch(BACKEND_URL + '/formtoken.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          amount:      Math.round(totalNum * 100), // en céntimos
-          currency:    'PEN',
-          orderId:     'FRUT-' + Date.now(),
-          email:       'cliente@frutarole.com',
-          firstName:   nombre.split(' ')[0] || nombre,
-          lastName:    nombre.split(' ').slice(1).join(' ') || '',
-          phoneNumber: telefono,
-        })
-      });
-
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err.error || 'Error HTTP ' + res.status);
-      }
-
-      const data = await res.json();
-
-      if (!data.formToken) {
-        throw new Error('El servidor no devolvió un formToken válido');
-      }
-
-      // 3. Inyectar el formToken en el div de Izipay
-      document.querySelector('.kr-embedded').setAttribute('kr-form-token', data.formToken);
-
-      // Ocultar loader y botón principal
-      document.getElementById('loader').style.display = 'none';
-      btn.style.display = 'none';
-
-      // Mostrar el formulario incrustado
-      document.getElementById('checkout-section').style.display = 'block';
-      document.getElementById('checkout-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-      // 4. Configurar KR.onSubmit para validar la firma tras el pago
-      KR.onSubmit(async (paymentData) => {
-        try {
-          const validRes = await fetch(BACKEND_URL + '/validate.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              'kr-answer': paymentData.rawClientAnswer,
-              'kr-hash':   paymentData.hash,
-            })
-          });
-
-          const esValido = await validRes.json();
-
-          if (esValido === true) {
-            document.getElementById('checkout-section').style.display = 'none';
-            mostrarExito('✅ ¡Pago realizado con éxito! Gracias por tu compra en Frutarole. Te contactaremos al WhatsApp <strong>' + telefono + '</strong> para coordinar la entrega.');
-          } else {
-            mostrarError('⚠️ El pago no pudo ser verificado. Si se realizó el cobro, contáctanos por WhatsApp.');
-          }
-        } catch (err) {
-          mostrarError('Error al validar el pago: ' + err.message);
+        const answer = JSON.parse(paymentData.rawClientAnswer);
+        if (answer.orderStatus === 'PAID') {
+          mostrarExito('✅ ¡Pago exitoso! Gracias por tu compra.<br>Te contactaremos al <strong>' + telefono + '</strong> para coordinar la entrega. 🍊');
+        } else {
+          mostrarError('El pago no fue completado. Estado: ' + (answer.orderStatus || 'desconocido'));
+          resetBoton();
         }
+      } catch(err) {
+        mostrarError('Error al verificar el pago: ' + err.message);
+      }
+      return false;
+    });
 
-        return false; // Evitar redirección automática de Izipay
-      });
+    KR.onError((ev) => {
+      mostrarError('Error en la pasarela: ' + (ev.errorMessage || JSON.stringify(ev)));
+    });
 
-      // Manejar errores de la pasarela
-      KR.onError((event) => {
-        mostrarError('Error en la pasarela: ' + (event.errorMessage || JSON.stringify(event)));
-      });
-
-    } catch (err) {
-      resetBoton();
-      mostrarError(
-        '⚠️ No se pudo conectar con el servidor de pago.<br>' +
-        '<small>' + err.message + '</small><br><br>' +
-        'Puedes contactarnos directamente por ' +
-        '<a href="https://wa.me/51981226618" style="color:var(--orange);font-weight:700;">WhatsApp</a> ' +
-        'para coordinar tu pedido.'
-      );
-    }
-  });
+  } catch(err) {
+    resetBoton();
+    mostrarError(
+      '⚠️ No se pudo iniciar el pago.<br>' +
+      '<small style="color:#999">' + err.message + '</small><br><br>' +
+      'Puedes pedir por <a href="https://wa.me/51981226618" style="color:var(--orange);font-weight:700">WhatsApp</a>'
+    );
+  }
+});
 </script>
 
 </body>
