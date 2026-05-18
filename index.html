@@ -2,251 +2,1190 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Frutarole | Jugo de Naranja Premium</title>
-<script
-  src="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/stable/kr-payment-form.min.js"
-  kr-public-key="49851420:publickey_Sk8tqnIMR5uLyBoaYdWfvyHrv0qyexBuaajj3SL2sLeMN"
-  kr-post-url-success="https://rafapierinelli1924.github.io/Frutarole/">
-</script>
-<link rel="stylesheet" href="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/stable/kr-payment-form.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frutar — Jugo de Naranja 100% Natural · Lima, Perú</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Izipay SDK -->
 <link rel="stylesheet" href="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/ext/classic-reset.css">
 <script src="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/ext/classic.js"></script>
+
 <style>
-  :root { --orange:#FF8C00; --shadow:0 10px 30px rgba(0,0,0,0.1); }
-  body { margin:0; font-family:'Segoe UI',Arial,sans-serif; background:#fff; color:#222; overflow-x:hidden; scroll-behavior:smooth; }
-  header { display:flex; justify-content:center; align-items:center; padding:15px 5%; background:var(--orange); color:#fff; position:fixed; width:100%; z-index:1000; box-sizing:border-box; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
-  .logo { font-weight:900; font-size:1.8rem; letter-spacing:-1px; text-transform:uppercase; display:flex; align-items:center; gap:6px; }
-  .logo-icon { background:#fff; color:var(--orange); width:30px; height:30px; border-radius:50%; display:inline-flex; justify-content:center; align-items:center; font-size:1.2rem; animation:pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
-  .reveal { opacity:0; transform:translateY(30px); transition:all 0.8s ease-out; }
-  .reveal.active { opacity:1; transform:translateY(0); }
-  .hero { padding:130px 8% 60px; text-align:center; background:linear-gradient(135deg,#FF8C00,#ffaa33); color:#fff; border-bottom-left-radius:40px; border-bottom-right-radius:40px; }
-  .hero h1 { font-size:2.6rem; font-weight:900; line-height:1.1; margin:0; }
-  .hero p { font-size:1.1rem; margin-top:15px; opacity:.95; font-weight:500; }
-  section { padding:60px 8%; }
-  h2 { font-size:2.2rem; font-weight:800; margin-bottom:35px; color:var(--orange); text-align:center; }
-  .nosotros-text { max-width:700px; margin:0 auto; text-align:center; font-size:1.1rem; color:#444; background:#fff; padding:30px; border-radius:20px; box-shadow:var(--shadow); }
-  .producto-grid { display:grid; grid-template-columns:1fr; gap:20px; margin-top:40px; }
-  .producto-item { background:#fff; padding:35px 25px; border-radius:20px; text-align:center; border:1px solid #eee; transition:all 0.4s; box-shadow:var(--shadow); }
-  .producto-item:hover { transform:translateY(-10px); border-color:var(--orange); }
-  .producto-item h3 { font-size:1.4rem; color:var(--orange); margin-bottom:10px; display:flex; align-items:center; justify-content:center; gap:8px; }
-  .producto-item h3 span { font-size:2rem; }
-  .clientes-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:15px; list-style:none; padding:0; max-width:800px; margin:0 auto; }
-  .clientes-grid li { padding:18px; background:#fff; border-radius:15px; text-align:center; font-weight:700; color:var(--orange); border:1px solid #f0f0f0; transition:all 0.3s; }
-  .clientes-grid li:hover { background:var(--orange); color:#fff; transform:scale(1.05); }
-  #pedidoForm { background:var(--orange); padding:35px 25px; border-radius:30px; display:grid; gap:15px; max-width:500px; margin:0 auto; color:#fff; box-shadow:0 20px 50px rgba(0,0,0,0.2); }
-  input, select { padding:16px; border:none; border-radius:12px; font-size:16px; width:100%; box-sizing:border-box; font-weight:500; outline:none; }
-  .pago-box { background:#fff; padding:20px; border-radius:20px; text-align:center; }
-  .monto { font-size:2.8rem; font-weight:900; color:var(--orange); display:block; line-height:1.1; margin-top:5px; }
-  .btn-final { background:#fff; color:var(--orange); font-weight:800; padding:20px; border:none; border-radius:15px; cursor:pointer; font-size:1.3rem; width:100%; text-transform:uppercase; transition:0.3s; animation:glow 3s infinite; }
-  @keyframes glow { 0%,100%{box-shadow:0 0 5px rgba(255,255,255,0.2)} 50%{box-shadow:0 0 20px rgba(255,255,255,0.6)} }
-  .btn-final:disabled { opacity:.7; cursor:not-allowed; animation:none; }
-  #loader { display:none; text-align:center; color:#fff; font-weight:700; padding:10px 0; }
-  .spinner { width:32px; height:32px; border:3px solid rgba(255,255,255,0.3); border-top-color:#fff; border-radius:50%; margin:8px auto 0; animation:spin 0.8s linear infinite; }
-  @keyframes spin { to{transform:rotate(360deg)} }
-  #checkout-section { display:none; max-width:500px; margin:25px auto 0; background:#fff; border-radius:20px; padding:30px; box-shadow:var(--shadow); }
-  #checkout-section h3 { text-align:center; color:var(--orange); margin:0 0 20px; }
-  #error-msg { display:none; background:#fff3f3; border:1px solid #ffcccc; color:#cc0000; border-radius:12px; padding:15px; text-align:center; font-size:.9rem; margin:12px auto 0; max-width:500px; line-height:1.6; }
-  #success-msg { display:none; background:#f0fff4; border:1px solid #b2f5c8; color:#276749; border-radius:12px; padding:20px; text-align:center; font-weight:700; margin:12px auto 0; max-width:500px; }
-  .whatsapp-btn { position:fixed; bottom:20px; right:20px; background:#25d366; color:#fff; border-radius:50px; padding:12px 25px; font-weight:700; text-decoration:none; display:flex; align-items:center; gap:8px; box-shadow:0 6px 15px rgba(0,0,0,0.15); z-index:2000; }
-  @media(min-width:768px) { .hero h1{font-size:4rem} .producto-grid{grid-template-columns:repeat(2,1fr)} .clientes-grid{grid-template-columns:repeat(4,1fr)} }
+/* ═══════════════════════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════════════════════ */
+:root {
+  --c-juice:    #F06B0C;
+  --c-deep:     #C45208;
+  --c-amber:    #FDEBD0;
+  --c-cream:    #FDFAF5;
+  --c-ink:      #1A0F00;
+  --c-bark:     #4A2800;
+  --c-mist:     #F5F0E8;
+  --c-white:    #FFFFFF;
+  --c-gray:     #9A8A78;
+  --c-green:    #2D5016;
+
+  --f-display:  'Playfair Display', Georgia, serif;
+  --f-body:     'Jost', system-ui, sans-serif;
+
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--f-body);
+  background: var(--c-cream);
+  color: var(--c-ink);
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════════════════ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw;
+  background: rgba(253,250,245,0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(74,40,0,0.07);
+  transition: box-shadow .3s;
+}
+.nav.scrolled { box-shadow: 0 2px 24px rgba(26,15,0,0.08); }
+
+.nav-logo {
+  font-family: var(--f-display);
+  font-size: 26px; font-weight: 700;
+  color: var(--c-juice);
+  text-decoration: none;
+  letter-spacing: -.01em;
+}
+
+.nav-links {
+  display: flex; align-items: center; gap: 8px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 12px; font-weight: 500; letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--c-bark);
+  text-decoration: none;
+  padding: 8px 14px; border-radius: 2px;
+  transition: color .2s, background .2s;
+}
+.nav-links a:hover { color: var(--c-juice); }
+
+/* Tabs audiencia */
+.nav-audience {
+  display: flex; gap: 0;
+  border: 1.5px solid rgba(74,40,0,0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.nav-audience button {
+  font-family: var(--f-body);
+  font-size: 11px; font-weight: 600; letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  border: none; cursor: pointer;
+  background: transparent; color: var(--c-bark);
+  transition: all .2s;
+}
+.nav-audience button.active {
+  background: var(--c-juice); color: var(--c-white);
+}
+
+/* ═══════════════════════════════════════════════════════
+   AUDIENCE SWITCH — mostrar/ocultar secciones
+═══════════════════════════════════════════════════════ */
+.for-b2c, .for-b2b { transition: opacity .4s, transform .4s; }
+body.view-b2b .for-b2c { display: none; }
+body.view-b2c .for-b2b { display: none; }
+
+/* ═══════════════════════════════════════════════════════
+   HERO COMPARTIDO
+═══════════════════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  padding-top: 68px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fondo textura grain */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(240,107,12,.1) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.hero-left {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 6vw 80px 8vw;
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--c-juice);
+  margin-bottom: 24px;
+  opacity: 0; animation: fadeUp .7s .1s var(--ease-out) forwards;
+}
+.hero-tag::before {
+  content: '';
+  width: 24px; height: 1.5px; background: var(--c-juice);
+}
+
+.hero-h1 {
+  font-family: var(--f-display);
+  font-size: clamp(48px, 5.5vw, 82px);
+  font-weight: 400; line-height: 1.06;
+  color: var(--c-ink);
+  margin-bottom: 28px;
+  opacity: 0; animation: fadeUp .7s .25s var(--ease-out) forwards;
+}
+.hero-h1 em { font-style: italic; color: var(--c-juice); }
+
+.hero-sub {
+  font-size: 16px; font-weight: 300; line-height: 1.8;
+  color: var(--c-bark); max-width: 400px;
+  margin-bottom: 48px;
+  opacity: 0; animation: fadeUp .7s .4s var(--ease-out) forwards;
+}
+
+.hero-ctas {
+  display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp .7s .55s var(--ease-out) forwards;
+}
+
+.btn { display: inline-block; text-decoration: none; cursor: pointer; border: none; font-family: var(--f-body); }
+.btn-primary {
+  background: var(--c-juice); color: var(--c-white);
+  font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  padding: 15px 36px; border-radius: 2px;
+  transition: background .2s, transform .15s;
+}
+.btn-primary:hover { background: var(--c-deep); transform: translateY(-1px); }
+
+.btn-ghost {
+  font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--c-bark);
+  padding-bottom: 3px;
+  border-bottom: 1.5px solid rgba(74,40,0,0.3);
+  transition: color .2s, border-color .2s;
+}
+.btn-ghost:hover { color: var(--c-juice); border-color: var(--c-juice); }
+
+/* HERO RIGHT */
+.hero-right {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--c-amber);
+  overflow: hidden;
+}
+
+.hero-right::before {
+  content: '';
+  position: absolute;
+  width: 560px; height: 560px; border-radius: 50%;
+  background: rgba(240,107,12,.1);
+  top: -120px; right: -140px;
+}
+.hero-right::after {
+  content: '';
+  position: absolute;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: rgba(240,107,12,.07);
+  bottom: -60px; left: -60px;
+}
+
+.product-float {
+  position: relative; z-index: 2;
+  text-align: center;
+  padding: 60px 48px;
+  opacity: 0; animation: fadeIn 1s .3s forwards;
+}
+
+.product-svg-wrap {
+  width: 240px;
+  filter: drop-shadow(0 40px 56px rgba(26,15,0,.22));
+  margin: 0 auto 28px;
+  animation: float 5s ease-in-out infinite;
+}
+
+.gallon-label {
+  font-family: var(--f-display);
+  font-size: 14px; font-style: italic;
+  color: var(--c-bark); letter-spacing: .04em;
+  margin-bottom: 14px;
+}
+
+.trust-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--c-white);
+  border: 1px solid rgba(74,40,0,.1);
+  border-radius: 40px;
+  padding: 8px 18px;
+  font-size: 11px; font-weight: 500; color: var(--c-bark);
+}
+.pill-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c-juice); }
+
+/* ═══════════════════════════════════════════════════════
+   STATS BAR
+═══════════════════════════════════════════════════════ */
+.stats {
+  background: var(--c-ink);
+  padding: 36px 8vw;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.stat { text-align: center; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,.08); }
+.stat:last-child { border-right: none; }
+.stat-n {
+  font-family: var(--f-display);
+  font-size: 40px; font-weight: 400; color: var(--c-juice);
+  display: block; line-height: 1; margin-bottom: 6px;
+}
+.stat-l {
+  font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+}
+
+/* ═══════════════════════════════════════════════════════
+   SECCIONES COMPARTIDAS
+═══════════════════════════════════════════════════════ */
+section { padding: 100px 8vw; }
+
+.eyebrow {
+  font-size: 10px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--c-juice); margin-bottom: 16px;
+}
+.section-h2 {
+  font-family: var(--f-display);
+  font-size: clamp(34px, 3.8vw, 56px); font-weight: 400; line-height: 1.1;
+  color: var(--c-ink); margin-bottom: 20px;
+}
+.section-h2 em { font-style: italic; color: var(--c-juice); }
+
+/* ═══════════════════════════════════════════════════════
+   PILARES (compartido)
+═══════════════════════════════════════════════════════ */
+.pillars { background: var(--c-white); }
+.pillars-grid {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 0;
+  margin-top: 64px;
+}
+.pillar {
+  padding: 40px 32px;
+  border-right: 1px solid rgba(74,40,0,.07);
+}
+.pillar:last-child { border-right: none; }
+.pillar-icon {
+  width: 48px; height: 48px;
+  background: var(--c-amber); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: 24px;
+}
+.pillar h3 {
+  font-family: var(--f-display);
+  font-size: 22px; font-weight: 400; margin-bottom: 12px; color: var(--c-ink);
+}
+.pillar p { font-size: 14px; font-weight: 300; line-height: 1.75; color: var(--c-bark); }
+
+/* ═══════════════════════════════════════════════════════
+   B2B — SECCIÓN HOTELES
+═══════════════════════════════════════════════════════ */
+.b2b-hero {
+  background: var(--c-ink);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.b2b-hero .eyebrow { color: rgba(255,255,255,.4); }
+.b2b-hero .section-h2 { color: var(--c-white); }
+.b2b-lead {
+  font-size: 17px; font-weight: 300; line-height: 1.8;
+  color: rgba(255,255,255,.65); margin-bottom: 40px;
+}
+
+.b2b-feats { display: flex; flex-direction: column; gap: 28px; }
+.b2b-feat { display: flex; gap: 20px; align-items: flex-start; }
+.feat-num {
+  font-family: var(--f-display);
+  font-size: 38px; font-weight: 400;
+  color: rgba(255,255,255,.15); line-height: 1; min-width: 44px;
+}
+.feat-body h4 {
+  font-family: var(--f-display);
+  font-size: 20px; font-weight: 400; color: var(--c-white); margin-bottom: 5px;
+}
+.feat-body p { font-size: 13px; font-weight: 300; color: rgba(255,255,255,.55); line-height: 1.6; }
+
+/* Clientes */
+.clients-section { background: var(--c-mist); text-align: center; }
+.clients-intro {
+  font-size: 16px; font-weight: 300; line-height: 1.8;
+  color: var(--c-bark); max-width: 520px; margin: 0 auto 56px;
+}
+.clients-logos {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+  max-width: 860px; margin: 0 auto;
+}
+.client-chip {
+  background: var(--c-white);
+  border: 1px solid rgba(74,40,0,.1);
+  border-radius: 40px;
+  padding: 11px 26px;
+  font-family: var(--f-display);
+  font-size: 16px; font-weight: 400; color: var(--c-bark);
+  transition: all .2s;
+}
+.client-chip:hover {
+  background: var(--c-juice); color: var(--c-white);
+  border-color: var(--c-juice); transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════════════
+   B2C — SECCIÓN FAMILIAS
+═══════════════════════════════════════════════════════ */
+.b2c-why {
+  background: var(--c-white);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.b2c-copy p {
+  font-size: 16px; font-weight: 300; line-height: 1.85;
+  color: var(--c-bark); margin-bottom: 16px;
+}
+.b2c-copy p strong { font-weight: 600; color: var(--c-ink); }
+
+.freshness-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+.fresh-card {
+  background: var(--c-amber);
+  border-radius: 8px; padding: 24px 20px;
+}
+.fresh-card .big {
+  font-family: var(--f-display);
+  font-size: 36px; font-weight: 400; color: var(--c-juice);
+  display: block; line-height: 1; margin-bottom: 8px;
+}
+.fresh-card span:last-child {
+  font-size: 12px; font-weight: 500; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--c-bark);
+}
+
+/* ═══════════════════════════════════════════════════════
+   PEDIDO (compartido B2B y B2C)
+═══════════════════════════════════════════════════════ */
+.order-section {
+  background: var(--c-juice);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+}
+.order-section .eyebrow { color: rgba(255,255,255,.5); }
+.order-section .section-h2 { color: var(--c-white); }
+.order-intro {
+  font-size: 16px; font-weight: 300; line-height: 1.8;
+  color: rgba(255,255,255,.75); margin-bottom: 32px;
+}
+
+/* info bullets */
+.order-bullets { display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
+.order-bullet { display: flex; gap: 12px; align-items: flex-start; }
+.bullet-icon {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; flex-shrink: 0; margin-top: 1px;
+}
+.bullet-text { font-size: 14px; font-weight: 300; color: rgba(255,255,255,.8); line-height: 1.5; }
+.bullet-text strong { font-weight: 600; color: var(--c-white); }
+
+/* FORM */
+.order-form-wrap {
+  background: var(--c-white);
+  border-radius: 8px;
+  padding: 36px 32px;
+  box-shadow: 0 32px 64px rgba(26,15,0,.18);
+}
+.form-title {
+  font-family: var(--f-display);
+  font-size: 24px; font-weight: 400; color: var(--c-ink); margin-bottom: 24px;
+}
+
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.f-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.f-field label {
+  font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--c-gray);
+}
+.f-field input, .f-field select {
+  padding: 11px 14px;
+  border: 1.5px solid rgba(74,40,0,.12);
+  border-radius: 4px;
+  font-family: var(--f-body); font-size: 14px; color: var(--c-ink);
+  background: var(--c-cream);
+  outline: none; transition: border-color .2s;
+}
+.f-field input:focus, .f-field select:focus { border-color: var(--c-juice); background: var(--c-white); }
+
+/* qty */
+.qty-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.qty-label-group { display: flex; flex-direction: column; gap: 2px; }
+.qty-label-group span:first-child { font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--c-gray); }
+.qty-label-group span:last-child { font-size: 12px; color: var(--c-bark); }
+.qty-ctrl { display: flex; align-items: center; gap: 10px; }
+.qty-btn {
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 1.5px solid rgba(74,40,0,.15);
+  background: var(--c-white); font-size: 18px; cursor: pointer; color: var(--c-ink);
+  display: flex; align-items: center; justify-content: center;
+  transition: all .2s;
+}
+.qty-btn:hover { background: var(--c-juice); color: var(--c-white); border-color: var(--c-juice); }
+.qty-n { font-family: var(--f-display); font-size: 24px; min-width: 28px; text-align: center; }
+
+/* total */
+.total-strip {
+  background: var(--c-amber);
+  border-radius: 6px; padding: 14px 16px;
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 20px;
+}
+.total-left { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--c-bark); }
+.total-sub { font-size: 11px; color: var(--c-gray); margin-top: 2px; }
+.total-right { font-family: var(--f-display); font-size: 28px; font-weight: 400; color: var(--c-juice); }
+
+.btn-pay {
+  width: 100%;
+  background: var(--c-juice); color: var(--c-white);
+  font-family: var(--f-body); font-size: 12px; font-weight: 600; letter-spacing: .14em;
+  text-transform: uppercase; padding: 16px;
+  border: none; border-radius: 4px; cursor: pointer;
+  transition: background .2s; margin-bottom: 16px;
+}
+.btn-pay:hover { background: var(--c-deep); }
+.btn-pay:disabled { opacity: .45; cursor: not-allowed; }
+
+/* seguridad */
+.sec-row { display: flex; gap: 14px; flex-wrap: wrap; }
+.sec-item { display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--c-gray); font-weight: 500; letter-spacing: .05em; }
+
+/* resultado */
+#result-wrap { display: none; }
+.result-card {
+  border-radius: 8px; padding: 28px 24px; text-align: center;
+  border: 2px solid #4CAF50; background: #F1FBF2; margin-top: 16px;
+}
+.result-card.error { border-color: #E53935; background: #FFF1F1; }
+.result-card .r-icon { font-size: 40px; margin-bottom: 12px; }
+.result-card h4 { font-family: var(--f-display); font-size: 22px; margin-bottom: 8px; color: var(--c-ink); }
+.result-card p { font-size: 13px; color: var(--c-bark); line-height: 1.6; }
+
+#izipay-wrap { margin-top: 20px; }
+.iz-loading { text-align: center; padding: 32px; font-size: 13px; color: var(--c-gray); }
+
+/* ═══════════════════════════════════════════════════════
+   NOSOTROS (historia)
+═══════════════════════════════════════════════════════ */
+.about-section {
+  background: var(--c-mist);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.about-copy p {
+  font-size: 16px; font-weight: 300; line-height: 1.85;
+  color: var(--c-bark); margin-bottom: 18px;
+}
+.about-copy p strong { font-weight: 600; color: var(--c-ink); }
+.years-badge {
+  display: inline-flex; flex-direction: column; align-items: center;
+  background: var(--c-juice); color: var(--c-white);
+  border-radius: 50%; width: 120px; height: 120px; justify-content: center;
+  margin-bottom: 32px;
+}
+.years-badge .big { font-family: var(--f-display); font-size: 42px; font-weight: 400; line-height: 1; }
+.years-badge .small { font-size: 10px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; opacity: .8; }
+
+.about-visual {
+  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px;
+  height: 440px;
+}
+.av-card {
+  border-radius: 8px; padding: 24px 20px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.av-card:nth-child(1) { background: var(--c-ink); grid-row: span 2; }
+.av-card:nth-child(2) { background: var(--c-amber); }
+.av-card:nth-child(3) { background: var(--c-juice); }
+.av-card .av-n {
+  font-family: var(--f-display); font-size: 42px; font-weight: 400;
+  line-height: 1; margin-bottom: 6px;
+}
+.av-card:nth-child(1) .av-n { color: var(--c-juice); }
+.av-card:nth-child(2) .av-n, .av-card:nth-child(3) .av-n { color: var(--c-ink); }
+.av-card:nth-child(3) .av-n { color: var(--c-white); }
+.av-card .av-l {
+  font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+}
+.av-card:nth-child(1) .av-l { color: rgba(255,255,255,.5); }
+.av-card:nth-child(2) .av-l { color: var(--c-bark); }
+.av-card:nth-child(3) .av-l { color: rgba(255,255,255,.8); }
+
+/* ═══════════════════════════════════════════════════════
+   CTA FINAL
+═══════════════════════════════════════════════════════ */
+.cta-final {
+  background: var(--c-cream);
+  text-align: center; padding: 120px 8vw;
+}
+.cta-h2 {
+  font-family: var(--f-display);
+  font-size: clamp(40px, 5vw, 68px); font-weight: 400; line-height: 1.1;
+  margin-bottom: 22px; color: var(--c-ink);
+}
+.cta-h2 em { font-style: italic; color: var(--c-juice); }
+.cta-sub {
+  font-size: 16px; font-weight: 300; color: var(--c-bark);
+  max-width: 440px; margin: 0 auto 44px; line-height: 1.8;
+}
+
+/* ═══════════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════════ */
+footer {
+  background: var(--c-ink);
+  padding: 48px 8vw;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 20px;
+}
+.f-logo { font-family: var(--f-display); font-size: 22px; color: var(--c-juice); }
+.f-links { display: flex; gap: 24px; list-style: none; }
+.f-links a {
+  font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  color: rgba(255,255,255,.35); text-decoration: none; transition: color .2s;
+}
+.f-links a:hover { color: var(--c-juice); }
+.f-copy { font-size: 11px; color: rgba(255,255,255,.25); }
+
+/* WHATSAPP FLOAT */
+.wa-float {
+  position: fixed; bottom: 24px; right: 24px; z-index: 300;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: #25D366;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,.2);
+  text-decoration: none;
+  transition: transform .2s;
+}
+.wa-float:hover { transform: scale(1.08); }
+.wa-float svg { width: 28px; height: 28px; fill: white; }
+
+/* ═══════════════════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-14px); }
+}
+
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity .7s var(--ease-out), transform .7s var(--ease-out);
+}
+.reveal.in { opacity: 1; transform: none; }
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-right { min-height: 380px; }
+  .hero-h1 { font-size: clamp(40px, 9vw, 60px); }
+  .stats { grid-template-columns: repeat(2,1fr); }
+  .pillars-grid { grid-template-columns: repeat(2,1fr); }
+  .pillar { border-bottom: 1px solid rgba(74,40,0,.07); }
+  .b2b-hero, .b2c-why, .order-section, .about-section { grid-template-columns: 1fr; gap: 48px; }
+  .f-row { grid-template-columns: 1fr; }
+  .freshness-grid { grid-template-columns: 1fr 1fr; }
+  .about-visual { height: 320px; }
+  .nav-links { display: none; }
+}
 </style>
 </head>
-<body>
+<body class="view-b2c">
 
-<header><div class="logo">Frutar<span class="logo-icon">🍊</span>le</div></header>
-
-<div class="hero">
-  <h1>Jugo de naranja <br>100% Puro y Natural</h1>
-  <p>Del campo a tu mesa, con la calidad de siempre.</p>
-</div>
-
-<section id="quienes-somos" class="reveal">
-  <h2>Quiénes Somos</h2>
-  <div class="nosotros-text">
-    <p>Tenemos <strong>25 años</strong> llevando el mejor jugo de naranja a los hoteles y casinos más importantes de Lima.</p>
-  </div>
-</section>
-
-<section id="producto" style="background:#f9f9f9">
-  <h2 class="reveal">Nuestros Pilares</h2>
-  <div class="producto-grid">
-    <div class="producto-item reveal"><h3><span>🍊</span> Pureza</h3><p>Jugo 100% natural sin agua ni azúcares añadidos.</p></div>
-    <div class="producto-item reveal"><h3><span>⏱️</span> Frescura</h3><p>Exprimido y entregado el mismo día.</p></div>
-    <div class="producto-item reveal"><h3><span>❄️</span> Frío</h3><p>Mantenemos los 4°C hasta tu puerta.</p></div>
-    <div class="producto-item reveal"><h3><span>🗓️</span> Vida Útil</h3><p>5 días de frescura natural garantizada.</p></div>
-  </div>
-</section>
-
-<section id="clientes" class="reveal">
-  <h2>Confían en nosotros</h2>
-  <ul class="clientes-grid">
-    <li>JW Marriott</li><li>Swissôtel</li><li>Casa Andina</li><li>Iberostar</li>
-    <li>Radisson</li><li>Don Mamino</li><li>Ibis Hotel</li><li>Sheraton</li>
+<!-- ═══════════════════════════════════════════════════
+     NAV
+═══════════════════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">Frutar</a>
+  <ul class="nav-links">
+    <li><a href="#producto">Producto</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#pedido">Pedir ahora</a></li>
   </ul>
-</section>
+  <div class="nav-audience">
+    <button id="btn-b2c" class="active" onclick="setAudience('b2c')">Para mi hogar</button>
+    <button id="btn-b2b" onclick="setAudience('b2b')">Para mi hotel</button>
+  </div>
+</nav>
 
-<section id="pedido" class="reveal">
-  <h2>Realiza tu pedido</h2>
-  <form id="pedidoForm">
-    <input id="nombre" type="text" placeholder="Nombre completo o Empresa" required>
-    <input id="telefono" type="tel" placeholder="WhatsApp (9 dígitos)" required pattern="[0-9]{9}">
-    <select id="distrito" required>
-      <option value="">Seleccione Distrito de entrega</option>
-      <option>Miraflores</option><option>San Borja</option><option>San Isidro</option>
-      <option>Lince</option><option>Jesus Maria</option><option>Barranco</option>
-      <option>Surco</option><option>Surquillo</option><option>Magdalena</option>
-    </select>
-    <input id="direccion" type="text" placeholder="Dirección exacta de entrega" required>
-    <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.15);padding:15px;border-radius:12px;">
-      <span style="font-weight:700">Galones (S/ 25.00 c/u):</span>
-      <input id="cantidad" type="number" min="1" value="1" style="width:70px;text-align:center" oninput="actualizarMonto(this.value)">
-    </div>
-    <div class="pago-box">
-      <p style="margin:0;color:#777;font-size:.85rem;font-weight:700;text-transform:uppercase">Total a pagar</p>
-      <span class="monto">S/ <span id="montoVer">25.00</span></span>
-    </div>
-    <div id="loader">Preparando pasarela...<div class="spinner"></div></div>
-    <button type="submit" class="btn-final" id="btnSubmit">PAGAR AHORA 💳</button>
-  </form>
+<!-- ═══════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════ -->
+<section class="hero" id="inicio">
+  <div class="hero-left">
+    <!-- B2C tag -->
+    <div class="hero-tag for-b2c">Lima, Perú · Jugo 100% natural</div>
+    <!-- B2B tag -->
+    <div class="hero-tag for-b2b">Proveedor premium · Hoteles y negocios</div>
 
-  <div id="checkout-section">
-    <h3>💳 Ingresa los datos de tu tarjeta</h3>
-    <div id="micuentawebstd_rest_wrapper">
-      <div class="kr-embedded" kr-form-token="PENDIENTE">
-        <div class="kr-pan"></div>
-        <div class="kr-expiry"></div>
-        <div class="kr-security-code"></div>
-        <button class="kr-payment-button"></button>
+    <!-- B2C título -->
+    <h1 class="hero-h1 for-b2c">
+      El jugo que sirven<br>
+      los <em>mejores hoteles</em><br>
+      de Lima, en tu mesa
+    </h1>
+    <!-- B2B título -->
+    <h1 class="hero-h1 for-b2b">
+      El jugo que <em>exigen</em><br>
+      los hoteles más<br>
+      premiun de Lima
+    </h1>
+
+    <!-- B2C desc -->
+    <p class="hero-sub for-b2c">
+      Frutar lleva 25 años exprimiendo naranjas frescas para los hoteles más exigentes de Lima. 
+      Ahora puedes tener ese mismo jugo en tu hogar — galonera de 3,75 L, sin conservantes, 
+      con cadena de frío hasta tu puerta.
+    </p>
+    <!-- B2B desc -->
+    <p class="hero-sub for-b2b">
+      Proveemos a JW Marriott, Swissotel, Sheraton y los hoteles de mayor categoría en Lima. 
+      25 años de operación seria, cadena de frío garantizada y pedidos programados 
+      que nunca fallan.
+    </p>
+
+    <div class="hero-ctas for-b2c">
+      <a href="#pedido" class="btn btn-primary">Hacer mi pedido</a>
+      <a href="#producto" class="btn btn-ghost">Ver el producto</a>
+    </div>
+    <div class="hero-ctas for-b2b">
+      <a href="#pedido" class="btn btn-primary">Solicitar cotización</a>
+      <a href="#clientes" class="btn btn-ghost">Ver nuestros clientes</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="product-float">
+      <!-- Galonera SVG ilustrada -->
+      <div class="product-svg-wrap">
+        <svg viewBox="0 0 200 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Cuerpo -->
+          <rect x="28" y="65" width="144" height="196" rx="14" fill="#F5A52A"/>
+          <rect x="28" y="65" width="30" height="196" rx="14" fill="#FAC257" opacity=".55"/>
+          <rect x="142" y="65" width="30" height="196" rx="14" fill="#C47B0A" opacity=".4"/>
+          <!-- Cuello -->
+          <rect x="72" y="34" width="56" height="38" rx="7" fill="#E8650A"/>
+          <!-- Tapa -->
+          <rect x="66" y="18" width="68" height="22" rx="9" fill="#D45C08"/>
+          <rect x="70" y="20" width="22" height="9" rx="5" fill="#FF7A2A" opacity=".6"/>
+          <!-- Etiqueta verde -->
+          <rect x="36" y="85" width="128" height="136" rx="10" fill="#2D5016"/>
+          <rect x="36" y="85" width="128" height="30" rx="10" fill="#F5C518"/>
+          <rect x="36" y="103" width="128" height="12" fill="#F5C518"/>
+          <!-- Texto -->
+          <text x="100" y="107" text-anchor="middle" font-family="Georgia,serif" font-size="21" font-weight="bold" fill="#2D5016">FRUTAR</text>
+          <text x="100" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-style="italic" fill="#F5C518">Jugo de Naranja</text>
+          <text x="100" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="17" font-weight="bold" fill="#FF6B35">100%</text>
+          <text x="100" y="166" text-anchor="middle" font-family="Georgia,serif" font-size="15" font-style="italic" fill="#fff">Natural</text>
+          <!-- Naranja decorativa -->
+          <circle cx="100" cy="185" r="22" fill="#F5A52A" opacity=".28"/>
+          <circle cx="100" cy="185" r="15" fill="#F5A52A" opacity=".5"/>
+          <!-- Bandera -->
+          <rect x="82" y="200" width="6" height="11" fill="#D52B1E"/>
+          <rect x="88" y="200" width="6" height="11" fill="#fff"/>
+          <rect x="94" y="200" width="6" height="11" fill="#D52B1E"/>
+          <text x="106" y="210" font-family="sans-serif" font-size="7" fill="#9FCC58">PRODUCTO PERUANO</text>
+          <!-- Faja inferior -->
+          <rect x="36" y="203" width="128" height="18" fill="#1E3A0D" opacity=".5"/>
+          <!-- Reflejo -->
+          <rect x="28" y="65" width="18" height="196" rx="14" fill="white" opacity=".07"/>
+        </svg>
+      </div>
+      <p class="gallon-label">Galonera 3,75 L · Presentación profesional</p>
+      <div class="trust-pill">
+        <span class="pill-dot"></span>
+        Sin conservantes · Cadena de frío
       </div>
     </div>
-    <div class="kr-form-error"></div>
   </div>
-
-  <div id="error-msg"></div>
-  <div id="success-msg"></div>
 </section>
 
-<a href="https://wa.me/51981226618" class="whatsapp-btn" target="_blank">¿Dudas? WhatsApp</a>
+<!-- ═══════════════════════════════════════════════════
+     STATS
+═══════════════════════════════════════════════════════ -->
+<div class="stats reveal">
+  <div class="stat"><span class="stat-n">25</span><span class="stat-l">Años de operación</span></div>
+  <div class="stat"><span class="stat-n">100%</span><span class="stat-l">Naranja pura</span></div>
+  <div class="stat"><span class="stat-n">8+</span><span class="stat-l">Hoteles premium</span></div>
+  <div class="stat"><span class="stat-n">4°C</span><span class="stat-l">Cadena de frío</span></div>
+</div>
 
+<!-- ═══════════════════════════════════════════════════
+     PILARES (compartido)
+═══════════════════════════════════════════════════════ -->
+<section class="pillars" id="producto">
+  <p class="eyebrow reveal">Por qué Frutar</p>
+  <h2 class="section-h2 reveal">Lo que hace <em>diferente</em><br>a cada galonera</h2>
+  <div class="pillars-grid">
+    <div class="pillar reveal">
+      <div class="pillar-icon">🍊</div>
+      <h3>Pureza total</h3>
+      <p>Jugo 100% natural, sin agua añadida, sin azúcares, sin concentrados. Solo naranja exprimida.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-icon">❄️</div>
+      <h3>Cadena de frío 4°C</h3>
+      <p>Mantenemos la temperatura en todo momento, desde producción hasta la entrega en tu puerta o negocio.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-icon">⚡</div>
+      <h3>Frescura real</h3>
+      <p>Exprimido y despachado rápido para preservar sabor, textura y valor nutricional. Hasta 5 días bajo refrigeración.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-icon">🇵🇪</div>
+      <h3>Producto peruano</h3>
+      <p>25 años de operación seria en Lima. Un equipo que conoce los estándares que los mejores hoteles exigen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     B2C — POR QUÉ PARA FAMILIAS
+═══════════════════════════════════════════════════════ -->
+<section class="b2c-why for-b2c">
+  <div class="b2c-copy reveal">
+    <p class="eyebrow">Para tu hogar</p>
+    <h2 class="section-h2">El mismo jugo que<br>sirven en el <em>Marriott</em>,<br>en tu mesa</h2>
+    <p>Hay jugos que se venden en el supermercado y hay jugos que se sirven en los desayunos del JW Marriott o el Swissotel. <strong>Frutar es ese jugo.</strong></p>
+    <p>La galonera de 3,75 L es perfecta para familias que valoran calidad de verdad: rinde toda la semana, llega fría a tu puerta y tiene un sabor que notarás la primera vez que la abras.</p>
+    <p>Pedido online, pago seguro con tarjeta, entrega en los principales distritos de Lima.</p>
+    <div style="margin-top: 32px;">
+      <a href="#pedido" class="btn btn-primary">Quiero mi galonera</a>
+    </div>
+  </div>
+  <div class="freshness-grid reveal">
+    <div class="fresh-card">
+      <span class="big">3,75<br><small style="font-size:18px">L</small></span>
+      <span>Por galonera</span>
+    </div>
+    <div class="fresh-card">
+      <span class="big">5</span>
+      <span>Días de frescura</span>
+    </div>
+    <div class="fresh-card" style="background:var(--c-ink);">
+      <span class="big" style="color:var(--c-juice);">0</span>
+      <span style="color:rgba(255,255,255,.6)">Conservantes</span>
+    </div>
+    <div class="fresh-card" style="background:var(--c-green);">
+      <span class="big" style="color:#9FCC58;">4°C</span>
+      <span style="color:rgba(255,255,255,.7)">Cadena de frío</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     B2B — PARA HOTELES
+═══════════════════════════════════════════════════════ -->
+<section class="b2b-hero for-b2b">
+  <div class="reveal">
+    <p class="eyebrow">Para hoteles y negocios</p>
+    <h2 class="section-h2">¿Eres jefe de<br>Alimentos &<br><em>Bebidas?</em></h2>
+    <p class="b2b-lead">
+      Ofrecemos condiciones especiales para hoteles, casinos y restaurantes de gama alta en Lima. 
+      Volúmenes, frecuencia y precios adaptados a tu operación. Sin intermediarios, 
+      trato directo, respuesta en menos de 24 horas.
+    </p>
+    <a href="https://wa.me/51981226618" class="btn btn-primary" target="_blank">Hablar con un asesor</a>
+  </div>
+  <div class="b2b-feats reveal">
+    <div class="b2b-feat">
+      <span class="feat-num">01</span>
+      <div class="feat-body">
+        <h4>Entregas programadas</h4>
+        <p>Lunes, miércoles y viernes según la demanda semanal de tu operación. Nunca te quedas sin stock.</p>
+      </div>
+    </div>
+    <div class="b2b-feat">
+      <span class="feat-num">02</span>
+      <div class="feat-body">
+        <h4>Precio por volumen</h4>
+        <p>Condiciones especiales para hoteles con consumo regular. Cotización en menos de 24 horas.</p>
+      </div>
+    </div>
+    <div class="b2b-feat">
+      <span class="feat-num">03</span>
+      <div class="feat-body">
+        <h4>Calidad constante</h4>
+        <p>El mismo estándar en cada galonera. Lo que recibe el Marriott es lo mismo que recibirás tú.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     CLIENTES (solo B2B)
+═══════════════════════════════════════════════════════ -->
+<section class="clients-section for-b2b reveal" id="clientes">
+  <p class="eyebrow">Nuestros clientes</p>
+  <h2 class="section-h2">Elegidos por los<br><em>mejores hoteles</em> de Lima</h2>
+  <p class="clients-intro">
+    Durante 25 años, los hoteles de mayor categoría en Lima han confiado en Frutar 
+    para ofrecer a sus huéspedes la mejor experiencia de jugo natural en el desayuno.
+  </p>
+  <div class="clients-logos">
+    <div class="client-chip">JW Marriott</div>
+    <div class="client-chip">Swissotel Lima</div>
+    <div class="client-chip">Sheraton Lima</div>
+    <div class="client-chip">Radisson Lima</div>
+    <div class="client-chip">Iberostar</div>
+    <div class="client-chip">Casa Andina Premium</div>
+    <div class="client-chip">Ibis Hotel</div>
+    <div class="client-chip">Don Mamino</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     NOSOTROS
+═══════════════════════════════════════════════════════ -->
+<section class="about-section" id="nosotros">
+  <div class="about-copy reveal">
+    <div class="years-badge">
+      <span class="big">25</span>
+      <span class="small">años</span>
+    </div>
+    <p class="eyebrow">Nuestra historia</p>
+    <h2 class="section-h2">Una operación<br>que <em>no improvisa</em></h2>
+    <p>Llevamos 25 años entregando jugo de naranja premium a los hoteles y familias más exigentes de Lima. No somos una startup — somos una operación consolidada con procesos, cadena de frío y una reputación que nos precede.</p>
+    <p>Cada galonera pasa por el mismo proceso desde el primer día: naranja seleccionada, exprimido inmediato, sellado en frío y entrega controlada. <strong>Sin atajos.</strong></p>
+  </div>
+  <div class="about-visual reveal">
+    <div class="av-card">
+      <span class="av-n">25</span>
+      <span class="av-l">Años en Lima</span>
+    </div>
+    <div class="av-card">
+      <span class="av-n">8+</span>
+      <span class="av-l">Hoteles activos</span>
+    </div>
+    <div class="av-card">
+      <span class="av-n">0°</span>
+      <span class="av-l">Atajos en calidad</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     PEDIDO (con Izipay integrado)
+═══════════════════════════════════════════════════════ -->
+<section class="order-section" id="pedido">
+  <div class="reveal">
+    <!-- B2C -->
+    <div class="for-b2c">
+      <p class="eyebrow">Pide ahora</p>
+      <h2 class="section-h2">Tu galonera,<br>en tu puerta</h2>
+      <p class="order-intro">Pedido online con pago seguro. Entregamos en los principales distritos de Lima con cadena de frío garantizada.</p>
+    </div>
+    <!-- B2B -->
+    <div class="for-b2b">
+      <p class="eyebrow">Realizar pedido</p>
+      <h2 class="section-h2">Solicita tu<br>cotización B2B</h2>
+      <p class="order-intro">Pago inmediato o autorización diferida. Condiciones especiales para volumen. Respuesta en menos de 24 horas.</p>
+    </div>
+
+    <div class="order-bullets">
+      <div class="order-bullet">
+        <div class="bullet-icon">💳</div>
+        <p class="bullet-text"><strong>Pago 100% seguro</strong> — Procesado por Izipay (VisaNet Perú). Acepta Visa, Mastercard, Amex y Diners.</p>
+      </div>
+      <div class="order-bullet">
+        <div class="bullet-icon">❄️</div>
+        <p class="bullet-text"><strong>Entrega refrigerada</strong> — Cadena de frío a 4°C desde producción hasta tu puerta.</p>
+      </div>
+      <div class="order-bullet">
+        <div class="bullet-icon">📱</div>
+        <p class="bullet-text"><strong>Coordinación por WhatsApp</strong> — Confirmamos horario de entrega contigo directamente.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMULARIO -->
+  <div class="order-form-wrap reveal">
+    <h3 class="form-title" id="form-title-b2c">Tu pedido de hoy</h3>
+
+    <div class="f-row">
+      <div class="f-field">
+        <label>Nombre completo / Empresa</label>
+        <input type="text" id="f-name" placeholder="Ej: Carlos García o Hotel Lima">
+      </div>
+      <div class="f-field">
+        <label>WhatsApp</label>
+        <input type="tel" id="f-whatsapp" placeholder="9XXXXXXXX">
+      </div>
+    </div>
+
+    <div class="f-field">
+      <label>Distrito de entrega</label>
+      <select id="f-district">
+        <option value="">Selecciona tu distrito</option>
+        <option>Miraflores</option>
+        <option>San Borja</option>
+        <option>San Isidro</option>
+        <option>Lince</option>
+        <option>Jesús María</option>
+        <option>Barranco</option>
+        <option>Surco</option>
+        <option>Surquillo</option>
+        <option>Magdalena</option>
+      </select>
+    </div>
+
+    <div class="f-field">
+      <label>Dirección exacta</label>
+      <input type="text" id="f-address" placeholder="Av. / Jr. / Calle, número, referencia">
+    </div>
+
+    <!-- Cantidad -->
+    <div class="qty-row">
+      <div class="qty-label-group">
+        <span>Galoneras</span>
+        <span>S/ 25.00 por unidad</span>
+      </div>
+      <div class="qty-ctrl">
+        <button class="qty-btn" onclick="changeQty(-1)">−</button>
+        <span class="qty-n" id="qty-n">1</span>
+        <button class="qty-btn" onclick="changeQty(1)">+</button>
+      </div>
+    </div>
+
+    <!-- Total -->
+    <div class="total-strip">
+      <div>
+        <div class="total-left">Total a pagar</div>
+        <div class="total-sub" id="total-sub">1 galonera × S/ 25.00</div>
+      </div>
+      <div class="total-right" id="total-amt">S/ 25.00</div>
+    </div>
+
+    <button class="btn-pay" id="btn-pay" onclick="initCheckout()">
+      Pagar con tarjeta →
+    </button>
+
+    <!-- Izipay se inyecta aquí -->
+    <div id="izipay-wrap"></div>
+
+    <!-- Resultado -->
+    <div id="result-wrap">
+      <div class="result-card" id="result-card">
+        <div class="r-icon" id="r-icon">✅</div>
+        <h4 id="r-title">¡Pedido confirmado!</h4>
+        <p id="r-msg"></p>
+      </div>
+    </div>
+
+    <!-- Seguridad -->
+    <div class="sec-row" style="margin-top:16px;">
+      <div class="sec-item">🔒 SSL cifrado</div>
+      <div class="sec-item">🛡️ Izipay · VisaNet Perú</div>
+      <div class="sec-item">🇵🇪 Lima, Perú</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     CTA FINAL
+═══════════════════════════════════════════════════════ -->
+<section class="cta-final">
+  <!-- B2C -->
+  <div class="for-b2c reveal">
+    <h2 class="cta-h2">El jugo de los hoteles<br><em>5 estrellas</em>, en tu mesa</h2>
+    <p class="cta-sub">Únete a las familias de Lima que ya disfrutan el mismo jugo que se sirve en los mejores hoteles de la ciudad.</p>
+    <a href="#pedido" class="btn btn-primary">Pedir ahora</a>
+  </div>
+  <!-- B2B -->
+  <div class="for-b2b reveal">
+    <h2 class="cta-h2">El proveedor que<br>los hoteles <em>confían</em></h2>
+    <p class="cta-sub">25 años de trayectoria, cadena de frío garantizada y un estándar que los hoteles más exigentes de Lima avalan.</p>
+    <a href="https://wa.me/51981226618" class="btn btn-primary" target="_blank">Contactar ahora</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="f-logo">Frutar</span>
+  <ul class="f-links">
+    <li><a href="#producto">Producto</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#pedido">Pedido</a></li>
+  </ul>
+  <span class="f-copy">© 2025 Frutar · Lima, Perú · RUC 20555932562</span>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/51981226618" class="wa-float" target="_blank" title="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ═══════════════════════════════════════════════════
+     JS
+═══════════════════════════════════════════════════════ -->
 <script>
-  const BACKEND_URL = 'https://frutarole-api.vercel.app';
-  const SCRIPT_URL  = 'https://script.google.com/macros/s/AKfycbwo1fKJ7upkqnNAghsS-q9OO6ORk26wWNSyu4rTBX1Uh2Ph0iio1vJy0pDDIVa85Saw/exec';
-  const HMAC_KEY    = 'cyzh2F0njvT4y5Pi44CmgMsRqR4cH0nD3GNug8YXTqN72';
+// ── Audiencia ────────────────────────────────────────────────────────────────
+function setAudience(type) {
+  document.body.className = type === 'b2b' ? 'view-b2b' : 'view-b2c';
+  document.getElementById('btn-b2b').classList.toggle('active', type === 'b2b');
+  document.getElementById('btn-b2c').classList.toggle('active', type === 'b2c');
+  // Actualizar título del form
+  const t = document.getElementById('form-title-b2c');
+  if (t) t.textContent = type === 'b2b' ? 'Datos del pedido B2B' : 'Tu pedido de hoy';
+}
 
-  function reveal() {
-    document.querySelectorAll('.reveal').forEach(el => {
-      if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
+// ── Nav scroll ───────────────────────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// ── Scroll reveal ────────────────────────────────────────────────────────────
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+// ── Pedido ───────────────────────────────────────────────────────────────────
+let qty = 1;
+const PRICE = 25.00;
+
+window.changeQty = (d) => {
+  qty = Math.max(1, qty + d);
+  document.getElementById('qty-n').textContent = qty;
+  const total = qty * PRICE;
+  document.getElementById('total-amt').textContent = `S/ ${total.toFixed(2)}`;
+  document.getElementById('total-sub').textContent = `${qty} galonera${qty>1?'s':''} × S/ ${PRICE.toFixed(2)}`;
+};
+
+// ── Checkout Izipay ──────────────────────────────────────────────────────────
+window.initCheckout = async () => {
+  const name     = document.getElementById('f-name').value.trim();
+  const whatsapp = document.getElementById('f-whatsapp').value.trim();
+  const district = document.getElementById('f-district').value;
+  const address  = document.getElementById('f-address').value.trim();
+
+  if (!name || !district || !address) {
+    alert('Por favor completa nombre, distrito y dirección antes de continuar.');
+    return;
+  }
+
+  const total   = qty * PRICE;
+  const orderId = `FRU-${Date.now()}`;
+  // email sintético para Izipay (requerido por la API)
+  const email   = `pedido+${orderId}@frutar.pe`;
+
+  const btn = document.getElementById('btn-pay');
+  btn.disabled    = true;
+  btn.textContent = 'Preparando pasarela…';
+
+  const wrap = document.getElementById('izipay-wrap');
+  wrap.innerHTML  = '<p class="iz-loading">Conectando con Izipay…</p>';
+
+  try {
+    // 1. Pedir formToken al backend (mismo endpoint que ya tienes en Vercel)
+    const res = await fetch('/api/formtoken', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        amount:    total,
+        currency:  'PEN',
+        orderId,
+        email,
+        firstName: name.split(' ')[0] || name,
+        lastName:  name.split(' ').slice(1).join(' ') || '-',
+        paymentType: 'immediate',
+        // metadatos extras para tu equipo
+        metadata: { whatsapp, district, address, qty }
+      }),
     });
-  }
-  window.addEventListener('scroll', reveal); reveal();
 
-  function actualizarMonto(v) {
-    document.getElementById('montoVer').innerText = (Math.max(1,parseInt(v)||1)*25).toFixed(2);
-  }
+    const { formToken, publicKey, error } = await res.json();
+    if (error || !formToken) throw new Error(error || 'No se pudo obtener formToken');
 
-  function mostrarError(msg) {
-    const el = document.getElementById('error-msg');
-    el.innerHTML = msg; el.style.display = 'block';
-    el.scrollIntoView({ behavior:'smooth', block:'center' });
-  }
+    // 2. Montar SDK Izipay
+    wrap.innerHTML = '<div id="mcw_wrapper"><div class="kr-embedded"></div></div>';
 
-  function mostrarExito(telefono) {
-    document.getElementById('checkout-section').style.display = 'none';
-    const el = document.getElementById('success-msg');
-    el.innerHTML = '✅ ¡Pago exitoso! Gracias por tu compra.<br>Te contactaremos al <strong>' + telefono + '</strong> para coordinar la entrega. 🍊';
-    el.style.display = 'block';
-    el.scrollIntoView({ behavior:'smooth', block:'center' });
-  }
+    const { KR } = await KRGlue.loadLibrary('https://static.micuentaweb.pe', publicKey);
+    await KR.setFormConfig({ formToken, 'kr-language': 'es-ES' });
+    await KR.attachForm('#mcw_wrapper');
 
-  function resetBoton() {
-    const btn = document.getElementById('btnSubmit');
-    btn.disabled = false; btn.style.display = 'block'; btn.innerText = 'PAGAR AHORA 💳';
-    document.getElementById('loader').style.display = 'none';
-  }
-
-  async function validarHmac(krAnswer, krHash) {
-    const enc = new TextEncoder();
-    const key = await crypto.subtle.importKey('raw', enc.encode(HMAC_KEY), { name:'HMAC', hash:'SHA-256' }, false, ['sign']);
-    const sig = await crypto.subtle.sign('HMAC', key, enc.encode(krAnswer));
-    const hex = Array.from(new Uint8Array(sig)).map(b=>b.toString(16).padStart(2,'0')).join('');
-    return hex === krHash;
-  }
-
-  document.getElementById('pedidoForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const nombre    = document.getElementById('nombre').value.trim();
-    const telefono  = document.getElementById('telefono').value.trim();
-    const distrito  = document.getElementById('distrito').value;
-    const direccion = document.getElementById('direccion').value.trim();
-    const cantidad  = Math.max(1, parseInt(document.getElementById('cantidad').value)||1);
-    const totalStr  = document.getElementById('montoVer').innerText;
-    const totalNum  = parseFloat(totalStr);
-
-    document.getElementById('error-msg').style.display   = 'none';
-    document.getElementById('success-msg').style.display = 'none';
-    document.getElementById('checkout-section').style.display = 'none';
-
-    const btn = document.getElementById('btnSubmit');
-    btn.disabled = true; btn.innerText = 'PROCESANDO...';
-    document.getElementById('loader').style.display = 'block';
-
-    try {
-      const fd = new FormData();
-      fd.append('nombre',nombre); fd.append('telf',telefono);
-      fd.append('dist',distrito); fd.append('dir',direccion);
-      fd.append('cant',cantidad); fd.append('total',totalStr);
-      fetch(SCRIPT_URL, { method:'POST', body:fd, mode:'no-cors' });
-    } catch(_) {}
-
-    try {
-      const res = await fetch(BACKEND_URL + '/api/formtoken', {
+    // 3. Resultado del pago
+    KR.onSubmit(async (paymentData) => {
+      const val = await fetch('/api/validate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          amount:      Math.round(totalNum * 100),
-          currency:    'PEN',
-          orderId:     'FRUT-' + Date.now(),
-          email:       'cliente@frutarole.com',
-          firstName:   nombre.split(' ')[0] || nombre,
-          lastName:    nombre.split(' ').slice(1).join(' ') || '',
-          phoneNumber: telefono,
-        })
-      });
+          'kr-answer': paymentData.rawClientAnswer,
+          'kr-hash':   paymentData.hash,
+        }),
+      }).then(r => r.json());
 
-      if (!res.ok) throw new Error('Error ' + res.status + ' del servidor');
-      const data = await res.json();
-      if (!data.formToken) throw new Error(data.error || 'Sin formToken');
+      const rw   = document.getElementById('result-wrap');
+      const rc   = document.getElementById('result-card');
+      rw.style.display = 'block';
+      wrap.style.display = 'none';
 
-      document.querySelector('.kr-embedded').setAttribute('kr-form-token', data.formToken);
-      document.getElementById('loader').style.display = 'none';
-      btn.style.display = 'none';
-      document.getElementById('checkout-section').style.display = 'block';
-      document.getElementById('checkout-section').scrollIntoView({ behavior:'smooth', block:'start' });
+      if (val.valid && val.orderStatus === 'PAID') {
+        rc.className = 'result-card';
+        document.getElementById('r-icon').textContent  = '✅';
+        document.getElementById('r-title').textContent = '¡Pedido confirmado!';
+        document.getElementById('r-msg').textContent   =
+          `Orden ${val.orderId} · S/ ${val.amount?.toFixed(2)} · Te contactaremos al ${whatsapp} para coordinar la entrega en ${district}.`;
+      } else {
+        rc.className = 'result-card error';
+        document.getElementById('r-icon').textContent  = '❌';
+        document.getElementById('r-title').textContent = 'Pago no procesado';
+        document.getElementById('r-msg').textContent   =
+          'Por favor intenta nuevamente o escríbenos por WhatsApp.';
+      }
+      return false;
+    });
 
-      KR.onSubmit(async (paymentData) => {
-        try {
-          const valido = await validarHmac(paymentData.rawClientAnswer, paymentData.hash);
-          if (!valido) { mostrarError('Firma inválida. Contacta soporte.'); return false; }
-          const answer = JSON.parse(paymentData.rawClientAnswer);
-          if (answer.orderStatus === 'PAID') {
-            mostrarExito(telefono);
-          } else {
-            mostrarError('El pago no fue completado. Intenta de nuevo.');
-            resetBoton();
-          }
-        } catch(err) { mostrarError('Error: ' + err.message); }
-        return false;
-      });
+    btn.style.display = 'none';
 
-      KR.onError((ev) => mostrarError('Error en la pasarela: ' + (ev.errorMessage || '')));
-
-    } catch(err) {
-      resetBoton();
-      mostrarError('⚠️ No se pudo iniciar el pago.<br><small>' + err.message + '</small><br><br>Escríbenos por <a href="https://wa.me/51981226618" style="color:var(--orange);font-weight:700">WhatsApp</a>');
-    }
-  });
+  } catch (err) {
+    console.error(err);
+    wrap.innerHTML = `<p style="color:#E53935;padding:12px;font-size:13px;">Error: ${err.message}. Intenta nuevamente o contáctanos por WhatsApp.</p>`;
+    btn.disabled    = false;
+    btn.textContent = 'Reintentar';
+  }
+};
 </script>
 </body>
 </html>
